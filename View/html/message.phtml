@@ -1,0 +1,16 @@
+<?php
+$messages = $this->getMessageModel()->getMessages();
+$types = [
+    'success' => 'info',
+    'notice' => 'warning',
+    'failure' => 'danger',
+];
+if ($messages) {
+    foreach ($messages as $type => $message) {
+        if ($message) {
+            echo "<div class='position-absolute  alert alert-{$types[$type]}'>" . $message . "</div>";
+        }
+    }
+    $this->getMessageModel()->clearMessages();
+}
+?>

@@ -1,0 +1,92 @@
+<?php
+$category = $this->category;
+$pathCategories = $this->pathCategories;
+
+// echo "<pre>";
+// print_r($category);
+// die;
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" />
+    <title>Category Edit</title>
+</head>
+
+<body class="flex flex-col min-h-screen">
+    <?php $this->setTemplate("html/header.phtml")->render(); ?>
+
+    <h1 class="text-gray-800 text-white text-center text-2xl font-bold py-5 px-4">
+        <?php echo $category->category_id ? 'Edit The ' : 'Add New '; ?>
+        Category
+    </h1>
+
+    <div style="max-width: 50%" class="container mx-auto p-4">
+        <div class="container bg-gray-300 mx-auto mt-auto p-4">
+
+            <form action="<?php echo $this->getUrl('save') ?>" method="post">
+
+                <div class="mb-4">
+                    <label class="mb-2 block font-bold text-gray-700" for="input-field-1"> Parent Category: </label>
+                    <select name="category[parent_id]"
+                        class="focus:shadow-outline w-full cursor-pointer appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
+                        id="dropdown">
+                        <option value="1">Root</option>
+                        <?php foreach ($pathCategories as $id => $path): ?>
+                            <?php $selected = ($id == $category->parent_id) ? 'selected' : ''; ?>
+                            <option value="<?php echo $id ?>" <?php echo $selected; ?>><?php echo $path ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+
+                <div class="mb-4">
+                    <label class="mb-2 block font-bold text-gray-700" for="input-field-1"> Name: </label>
+                    <input name="category[name]" value="<?php echo $category->name; ?>"
+                        class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
+                        id="input-field-1" type="text" placeholder="Enter the name of the category..." />
+                </div>
+
+                <div class="mb-4">
+                    <label class="mb-2 block font-bold text-gray-700" for="dropdown"> Status: </label>
+                    <select name="category[status]"
+                        class="focus:shadow-outline w-full cursor-pointer appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
+                        id="dropdown">
+                        <?php foreach ($category->getTable()->getStatusOptions() as $key => $value): ?>
+                            <?php $selected = ($key == $category->getStatus()) ? 'selected' : ''; ?>
+                            <option value="<?php echo $key ?>" <?php echo $selected; ?>><?php echo $value; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+
+                <div class="mb-4">
+                    <label class="mb-2 block font-bold text-gray-700" for="input-field-1"> Description: </label>
+                    <textarea name="category[description]"
+                        class="resize-none w-full border rounded-md focus:outline-none focus:ring-2 py-2 text-gray-700 px-3 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="Enter text"><?php echo $category->description; ?></textarea>
+                </div>
+
+                <div class="flex justify-center space-x-4">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        <a href="<?php echo $this->getUrl('grid', null, null, true) ?>">
+                            CENCLE
+                        </a>
+                    </button>
+                    <button type="submit"
+                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                        SUBMIT
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <?php $this->setTemplate('html/footer.phtml')->render(); ?>
+
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<?php
+$paymentMethod = $this->getPaymentMethod();
+$action = $paymentMethod->method_id ? 'Edit' : 'Add';
+?>
+
+<div class="container">
+    <form action="<?php echo $this->getUrl("save",null,["id"=>$paymentMethod->method_id],true) ?>" method="post" id="payment-method-form">
+        <div class="row">
+            <div class="col-6">
+                <h1 class="my-5 mb-4 fs-2">
+                    <?php echo $action ?> Payment Method
+                </h1>
+
+                <div class="mb-2 row">
+                    <label for="paymentMethod-name" class="col-sm-3 col-form-label">Name:</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="paymentMethod[name]"
+                            value="<?php echo $paymentMethod->name ?>" id="paymentMethod-name"
+                            placeholder="Enter the name...">
+                    </div>
+                </div>
+
+                <div class="mb-2 row">
+                    <label for="paymentMethod-status" class="col-sm-3 col-form-label">Status:</label>
+                    <div class="col-sm-3">
+                        <select class="form-select" name="paymentMethod[status]" id="paymentMethod-status">
+                            <?php foreach ($paymentMethod->getResource()->getStatusOptions() as $key => $value): ?>
+                                <?php $selected = ($key == $paymentMethod->getStatus()) ? 'selected' : ''; ?>
+                                <option value="<?php echo $key ?>" <?php echo $selected; ?>>
+                                    <?php echo $value ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="d-flex mt-5">
+            <button onclick="ajax.setUrl('<?php echo $this->getUrl('grid') ?>').call()" type="button" class="btn btn-danger me-2">Cancel</button>
+            <button class="btn btn-primary" type="button" onclick="ajax.setForm('payment-method-form').call()">Create</button>
+        </div>
+    </form>
+</div>

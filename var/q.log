@@ -1,0 +1,202 @@
+2023-04-20 22:01:05 : 
+
+2023-04-20 22:03:37 : 
+
+2023-04-20 22:08:18 : Model_Quote Object
+(
+    [data:protected] => Array
+        (
+            [order_id] => 5
+            [customer_id] => 145
+            [status] => 0
+            [payment_method_id] => 0
+            [shipping_method_id] => 0
+            [shipping_amount] => 0
+            [total] => 0
+            [quote_billing_id] => 0
+            [quote_shipping_id] => 0
+            [created_at] => 2023-04-20 18:46:29
+        )
+
+    [resourceClass:protected] => Model_Quote_Resource
+    [resource:protected] => Model_Quote_Resource Object
+        (
+            [adapter:protected] => Model_Core_Adapter Object
+                (
+                    [config] => Array
+                        (
+                            [host] => localhost
+                            [username] => root
+                            [password] => 
+                            [dbname] => newmvc-parth-jethwani
+                        )
+
+                    [connect] => mysqli Object
+                        (
+                            [affected_rows] => 1
+                            [client_info] => mysqlnd 8.1.4
+                            [client_version] => 80104
+                            [connect_errno] => 0
+                            [connect_error] => 
+                            [errno] => 0
+                            [error] => 
+                            [error_list] => Array
+                                (
+                                )
+
+                            [field_count] => 10
+                            [host_info] => localhost via TCP/IP
+                            [info] => 
+                            [insert_id] => 0
+                            [server_info] => 10.4.24-MariaDB
+                            [server_version] => 100424
+                            [sqlstate] => 00000
+                            [protocol_version] => 10
+                            [thread_id] => 9157
+                            [warning_count] => 0
+                        )
+
+                )
+
+            [primaryKey:protected] => order_id
+            [tableName:protected] => quote
+        )
+
+    [collectionClass:protected] => Model_Quote_Collection
+    [collection:protected] => 
+    [quote:protected] => 
+)
+
+
+2023-04-20 22:10:14 : Model_Quote Object
+(
+    [data:protected] => Array
+        (
+            [order_id] => 5
+            [customer_id] => 145
+            [status] => 0
+            [payment_method_id] => 0
+            [shipping_method_id] => 0
+            [shipping_amount] => 0
+            [total] => 0
+            [quote_billing_id] => 0
+            [quote_shipping_id] => 0
+            [created_at] => 2023-04-20 18:46:29
+        )
+
+    [resourceClass:protected] => Model_Quote_Resource
+    [resource:protected] => Model_Quote_Resource Object
+        (
+            [adapter:protected] => Model_Core_Adapter Object
+                (
+                    [config] => Array
+                        (
+                            [host] => localhost
+                            [username] => root
+                            [password] => 
+                            [dbname] => newmvc-parth-jethwani
+                        )
+
+                    [connect] => mysqli Object
+                        (
+                            [affected_rows] => 1
+                            [client_info] => mysqlnd 8.1.4
+                            [client_version] => 80104
+                            [connect_errno] => 0
+                            [connect_error] => 
+                            [errno] => 0
+                            [error] => 
+                            [error_list] => Array
+                                (
+                                )
+
+                            [field_count] => 10
+                            [host_info] => localhost via TCP/IP
+                            [info] => 
+                            [insert_id] => 0
+                            [server_info] => 10.4.24-MariaDB
+                            [server_version] => 100424
+                            [sqlstate] => 00000
+                            [protocol_version] => 10
+                            [thread_id] => 9161
+                            [warning_count] => 0
+                        )
+
+                )
+
+            [primaryKey:protected] => order_id
+            [tableName:protected] => quote
+        )
+
+    [collectionClass:protected] => Model_Quote_Collection
+    [collection:protected] => 
+    [quote:protected] => 
+)
+
+
+2023-04-20 22:10:26 : Model_Quote Object
+(
+    [data:protected] => Array
+        (
+            [order_id] => 5
+            [customer_id] => 145
+            [status] => 0
+            [payment_method_id] => 0
+            [shipping_method_id] => 0
+            [shipping_amount] => 0
+            [total] => 0
+            [quote_billing_id] => 0
+            [quote_shipping_id] => 0
+            [created_at] => 2023-04-20 18:46:29
+        )
+
+    [resourceClass:protected] => Model_Quote_Resource
+    [resource:protected] => Model_Quote_Resource Object
+        (
+            [adapter:protected] => Model_Core_Adapter Object
+                (
+                    [config] => Array
+                        (
+                            [host] => localhost
+                            [username] => root
+                            [password] => 
+                            [dbname] => newmvc-parth-jethwani
+                        )
+
+                    [connect] => mysqli Object
+                        (
+                            [affected_rows] => 1
+                            [client_info] => mysqlnd 8.1.4
+                            [client_version] => 80104
+                            [connect_errno] => 0
+                            [connect_error] => 
+                            [errno] => 0
+                            [error] => 
+                            [error_list] => Array
+                                (
+                                )
+
+                            [field_count] => 10
+                            [host_info] => localhost via TCP/IP
+                            [info] => 
+                            [insert_id] => 0
+                            [server_info] => 10.4.24-MariaDB
+                            [server_version] => 100424
+                            [sqlstate] => 00000
+                            [protocol_version] => 10
+                            [thread_id] => 9183
+                            [warning_count] => 0
+                        )
+
+                )
+
+            [primaryKey:protected] => order_id
+            [tableName:protected] => quote
+        )
+
+    [collectionClass:protected] => Model_Quote_Collection
+    [collection:protected] => 
+    [quote:protected] => 
+)
+
+

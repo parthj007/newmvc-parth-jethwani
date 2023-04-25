@@ -1,0 +1,52 @@
+<?php
+$row = $this->getRow('row');
+$attributes = $this->getAttributes();
+$action = $row->getId() ? 'Edit' : 'Add';
+?>
+
+<div class="container" style="min-height: 34em;">
+    <form action="<?php echo $this->getUrl("save") ?>" method="post">
+        <div class="row" >
+            <div class="col-6">
+                <h1 class="my-5 mb-4 fs-2"><?php echo $action;?> Item
+                </h1>
+
+                <div class="mb-2 row">
+                    <label for="" class="col-sm-3 col-form-label">SKU:</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="item[sku]" id="attr-backend-model"
+                            value="<?php echo $row->sku;?>" placeholder="Enter sku...">
+                    </div>
+                </div>
+
+                <div class="mb-2 row">
+                    <label for="status" class="col-sm-3 col-form-label">Status:</label>
+                    <div class="col-sm-auto">
+                        <select class="form-select" name="item[status]" id="status">
+                            <?php foreach ($row->getResource()->getStatusOptions() as $key => $value): ?>
+                                <?php $selected = ($key == $row->getStatus()) ? 'selected' : ''; ?>
+                                <option value="<?php echo $key ?>" <?php echo $selected; ?>>
+                                    <?php echo $value ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+
+                <?php if($attributes): ?>
+                    <?php foreach($attributes->getData() as $attribute):?>
+                    <div class="mb-2 row">
+                        <label for="status" class="col-sm-3 col-form-label">
+                        <?php echo $attribute->name;?>:</label>
+                        <?php $this->getLayout()->createBlock('eav_attribute_inputtype')->setRow($row)->setAttribute($attribute)->render()?>
+                    </div>
+                    <?php endforeach;?>
+                <?php endif;?>
+
+            </div>
+            <div class="d-flex mt-5">
+                <a href="<?php echo $this->getUrl('grid') ?>" role="button" class="btn btn-danger me-2">Cancel</a>
+                <button class="btn btn-primary" type="submit">Create</button>
+            </div>
+    </form>
+</div>

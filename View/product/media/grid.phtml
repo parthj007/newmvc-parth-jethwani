@@ -1,0 +1,99 @@
+<?php
+$medias = $this->getMedias();
+$productName = $this->getProductName()->getData('name');
+$base = $this->getBase();
+$small = $this->getSmall();
+$thumb = $this->getThumb();
+?>
+
+<form action="<?php echo $this->getUrl('config')?>" method="post">
+    <div class="container py-4 pt-5">
+        <div class="row">
+            <div class="col-md-12 d-flex align-items-center">
+                <h1 class="me-auto fs-2">Manage Media for
+                    <?php echo $productName ?>
+                </h1>
+                <button class="btn btn-success me-5">Save Configuration</button>
+
+                <a href="<?php echo $this->getUrl('add'); ?>" class="btn btn-primary">Add Media</a>
+            </div>
+        </div>
+    </div>
+    <div class="responsive">
+
+        <table class="table table-striped">
+            <thead>
+                <tr class="text-center">
+                    <th scope="col">media Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Base</th>
+                    <th scope="col">Small</th>
+                    <th scope="col">Thumb</th>
+                    <th scope="col">Gallery</th>
+                    <th scope="col">Created At</th>
+                    <th scope="col">Updated At</th>
+                    <th scope="col">DELETE</th>
+                </tr>
+            </thead>
+            <tbody >
+                <?php if (!$medias): ?>
+                    <tr>
+                        <td colspan="10" class="text-center">No Records Found</td>
+                    </tr>
+                <?php else:
+                    foreach ($medias->getData() as $media): ?>
+                        <tr class="text-center">
+                            <td >
+                                <?php echo $media->media_id; ?>
+                            </td>
+                            <td>
+                                <?php echo $media->name; ?>
+                            </td>
+                            <td>
+                                <img src="View/media_images_uploaded/<?php echo $media->image;?>" alt="image description" 
+                                    width='150' style="height:150px" class="img-fluid">
+                            </td>
+                            <td>
+                                <div class="form-check">
+                                    <?php $selected = ($base->getId()==$media->getId()) ? 'checked' : '';?>
+                                    <input class="form-check-input" <?php echo $selected;?> value="<?php echo $media->getId()?>" type="radio" name="config[base]">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check">
+                                    <?php $selected = ($small->getId() == $media->getId()) ? 'checked' : '';?>
+                                    <input class="form-check-input" <?php echo $selected;?> value="<?php echo $media->getId()?>"type="radio" name="config[small]">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check">
+                                    <?php $selected = ($thumb->getId() == $media->getId()) ? 'checked' : '';?>
+                                    <input class="form-check-input"  <?php echo $selected;?> value="<?php echo $media->getId()?>"type="radio" name="config[thumb]">
+                                </div>
+                            </td>
+
+                            <td>
+                                <div class="form-check">
+                                    <?php $selected = ($media->gallery) ? 'checked' : '';?>
+                                    <input class="form-check-input" <?php echo $selected;?> value="<?php echo $media->getId()?>"type="checkbox" name="config[gallery][]" id="flexCheckDefault">
+                                </div>
+                            </td>
+                            <td>
+                                <?php echo $media->created_at; ?>
+                            </td>
+                            <td>
+                                <?php echo $media->updated_at; ?>
+                            </td>
+
+                            <td>
+                                <a class="btn btn-danger py-1 delete-btn" 
+                                href="<?php echo $this->getUrl("delete", null, ['id'=>$media->getId()]) ?>">Delete</a>
+                            </td>
+                        </tr>
+                    <?php endforeach; endif; ?>
+            </tbody>
+        </table>
+    </div>
+
+</form>

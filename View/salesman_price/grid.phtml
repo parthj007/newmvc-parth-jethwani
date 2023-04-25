@@ -1,0 +1,121 @@
+<?php
+$s_name = $this->getSname();
+$listOfSalesman = $this->getListOfSalesman();
+$lists = $this->getLists();
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Salesman Prices</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.15/tailwind.min.css">
+    <link rel="stylesheet" href="Skin/Css/style.css">
+</head>
+
+<body class="bg-gray-300 flex flex-col min-h-screen ">
+    <?php require_once("View/html/header.phtml"); ?>
+
+    <div class="mx-auto mt-5 flex-grow items-center">
+        <h1 class="mb-8 text-3xl font-bold">Salesman Price</h1>
+
+        <form action="index.php?c=salesman_price&a=update" method="post">
+
+            <div class="mb-8 flex items-center">
+                <label for="dropdown" class="mr-4">Salesman:</label>
+                <select id="dropdown" class="rounded border border-gray-400 px-4 py-2">
+                    <option value="<?php echo $_SESSION['sid']; ?>">
+                        <?php echo $s_name; ?>
+                    </option>
+                    <?php foreach ($listOfSalesman as $salesman): ?>
+                        <option value="<?php echo $salesman['salesman_id']; ?>"><?php echo $salesman['fname'] ?></option>
+                    <?php endforeach; ?>
+                </select>
+
+                <button class="ml-4 rounded bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-700">Update
+                    Price</button>
+            </div>
+
+            <table class="border-collapse border border-gray-400">
+                <thead>
+                    <tr>
+                        <th class="border border-gray-400 py-2 px-4">Product Id</th>
+                        <th class="border border-gray-400 py-2 px-4">Name</th>
+                        <th class="border border-gray-400 py-2 px-4">SKU</th>
+                        <th class="border border-gray-400 py-2 px-4">Price</th>
+                        <th class="border border-gray-400 py-2 px-4">Cost</th>
+                        <th class="border border-gray-400 py-2 px-4">Salesman Name</th>
+                        <th class="border border-gray-400 py-2 px-4">S Price</th>
+                        <th class="border border-gray-400 py-2 px-4">Remove</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                    <?php foreach ($lists as $list): ?>
+                        <tr>
+                            <td class="border border-gray-400 py-2 px-4">
+                                <?php echo $list['product_id'] ?>
+                            </td>
+                            <td class="border border-gray-400 py-2 px-4">
+                                <?php echo $list['name'] ?>
+                            </td>
+                            <td class="border border-gray-400 py-2 px-4">
+                                <?php echo $list['sku'] ?>
+                            </td>
+                            <td class="border border-gray-400 py-2 px-4">
+                                <?php echo $list['price'] ?>
+                            </td>
+                            <td class="border border-gray-400 py-2 px-4">
+                                <?php echo $list['cost'] ?>
+                            </td>
+                            <td class="border border-gray-400 py-2 px-4">
+                                <?php echo $s_name; ?>
+                            </td>
+                            <td class="border border-gray-400 py-2 px-4">
+                                <input type="hidden" name="salesman_price[product_id][]"
+                                    value="<?php echo $list['product_id'] ?>">
+                                <input class="border border-gray-400 rounded-lg py-2 px-4" type="number"
+                                    name="salesman_price[price][]" value="<?php echo $list['salesman_price'] ?>">
+                            </td>
+                            <td class="border border-gray-400 py-2 px-4">
+                                <a href="index.php?c=salesman_price&a=remove&eid=<?php echo $list['entity_id']; ?>"
+                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                    <?php if ($list['entity_id'] != null): ?>
+                                        Remove Price
+                                    <?php endif; ?>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <?php require_once("View/html/footer.phtml"); ?>
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+<script>
+
+    var dropdown = document.getElementById("dropdown");
+    dropdown.addEventListener("change", function () {
+        var selectedOption = dropdown.value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "index.php?c=salesman_price&a=filter", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log(xhr.responseText);
+                document.getElementById("table-body").innerHTML = xhr.responseText;
+            }
+        };
+        xhr.send("sid=" + selectedOption);
+    });
+
+</script>
+
+</html>

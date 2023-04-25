@@ -1,0 +1,7 @@
+<?php $row = $this->getRow();?>
+<?php $attribute = $this->getAttribute(); ?>
+
+<div class="col-sm-5 form-floating">
+  <textarea class="form-control py-2" id="exampleFormControlTextarea1" name="attribute[<?php echo $attribute->backend_type;?>][<?php echo $attribute->getId();?>]" placeholder="Your message" rows="5"><?php echo $row->getAttributeValue($attribute); ?>
+  </textarea>
+</div>

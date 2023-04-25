@@ -1,0 +1,44 @@
+<?php
+$brand = $this->getBrand();
+$action = $brand->getId() ? 'Edit' : 'Add';
+?>
+
+<div class="container">
+    <form action="<?php echo $this->getUrl("save") ?>" method="post">
+        <div class="row">
+            <div class="col-6">
+                <h1 class="my-5 mb-4 fs-2">
+                    <?php echo $action ?> Brand
+                </h1>
+
+                <div class="mb-2 row">
+                    <label for="brand-email" class="col-sm-3 col-form-label">Name:</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="brand[name]" value="<?php echo $brand->name ?>"
+                            id="brand-email" placeholder="Enter the name...">
+                    </div>
+                </div>
+
+                <div class="mb-2 row">
+                    <label for="brand-description" class="col-sm-3 col-form-label">Description:</label>
+                    <div class="col-sm-5">
+                        <textarea class="form-control" name="brand[description]" id="brand-description" cols="30" rows="2"
+                            ><?php echo $brand->description ?></textarea>
+                    </div>
+                </div>
+
+
+                <div class="input-group mb-3">
+                      <input type="file" class="form-control" name="brand[image]" id="inputGroupFile02">
+                      <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="d-flex mt-5">
+            <a href="<?php echo $this->getUrl('grid') ?>" role="button" class="btn btn-danger me-2">Cancel</a>
+            <button class="btn btn-primary" type="submit">Create</button>
+        </div>
+    </form>
+</div>

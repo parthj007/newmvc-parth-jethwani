@@ -1,0 +1,162 @@
+<?php
+$customers = $this->getCollection();
+?>
+<div class="container" style="margin:3vh 22vw 0 ">
+    <form action="<?php echo $this->getUrl("prepareQuote",null,null,true);?>" method="post">
+        <label for="customers">Choose a Customer:</label>
+        <select name="customer" id="customer">
+            <?php if($customers):?>
+                <option selected>Select Customer</option>
+                <?php foreach($customers->getData() as $customer):?>
+                    <option value="<?php echo $customer->customer_id;?>" name="id"><?php echo $customer->fname." "; echo $customer->lname;?></option>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </select>
+        <input type="submit" name="GET" id="1formbtn">
+    </form>
+</div>    
+    <?php if($quote=$this->getQuote()):?>
+        <?php if($quote->customer_id): ?>
+        <?php $customer = $quote->getCustomer();?>
+        <div style="margin:3vh 22vw 0;border: 1px solid black;padding: 10px;">
+         Name <input type="text" readonly value="<?php echo $customer->fname." ".$customer->lname; ?>">
+         Email <input type="text" readonly value="<?php echo $customer->email; ?>">
+        </div>
+
+    <?php $billingAddress = $quote->getBillingAddress();?>
+    <div id="2form" style="border: 1px solid black; box-sizing: border-box;padding: 0 0 0 50px;">
+    <form action="<?php echo $this->getUrl("saveAddress","quote",null,true);?>" method="post">
+        <div class="row">
+            <div class="col-6">
+
+                <h1 class="my-5 mb-4 fs-2">Billing Address</h1>
+                <div class="mb-2 row">
+                    <label for="billing-address" class="col-sm-3 col-form-label">Address:</label>
+                    <div class="col-sm-5">
+                        <textarea class="form-control" name="billing[address]" id="billing-address" cols="30" rows="2"
+                            placeholder="Address Line..."><?php echo $billingAddress->address ?></textarea>
+                    </div>
+                </div>
+
+
+                <div class="mb-2 row">
+                    <label for="billing-city" class="col-sm-3 col-form-label">City:</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="billing[city]"
+                            value="<?php echo $billingAddress->city ?>" id="billing-city" placeholder="City...">
+                    </div>
+                </div>
+
+                <div class="mb-2 row">
+                    <label for="billing-zipcode" class="col-sm-3 col-form-label">Zipcode:</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="billing[zipcode]"
+                            value="<?php echo $billingAddress->zipcode ?>" id="billing-zipcode"
+                            placeholder="Zipcode...">
+                    </div>
+                </div>
+
+                <div class="mb-2 row">
+                    <label for="billing-state" class="col-sm-3 col-form-label">State:</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="billing[state]"
+                            value="<?php echo $billingAddress->state ?>" id="billing-state" placeholder="State...">
+                    </div>
+                </div>
+
+                <div class="mb-2 row">
+                    <label for="billing-country" class="col-sm-3 col-form-label">Country:</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="billing[country]"
+                            value="<?php echo $billingAddress->country ?>" id="billing-country"
+                            placeholder="Country...">
+                    </div>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox"  name="checkbox1" 
+                        id="defaultCheck1">
+                    <label class="form-check-label" style="color:blue" for="defaultCheck1">
+                        Same as billing address
+                    </label>
+                </div>
+                 <div class="form-check">
+                    <input class="form-check-input" type="checkbox"  name="checkbox2" 
+                        id="defaultCheck1">
+                    <label class="form-check-label" style="color:blue" for="defaultCheck2">
+                        save to address book
+                    </label>
+                </div>
+
+                <script type="text/javascript">
+                    $("#defaultCheck1").change(function(){
+                        if(this.checked) {
+                            $('#shipping-address').hide();
+                        } else {
+                            $('#shipping-address').show();
+                        }
+                    })
+                </script>
+
+            </div>
+
+<?php $shippingAddress = $quote->getShippingAddress(); ?>
+
+            <div class="col-6" id="shipping-address">
+
+                <h1 class="my-5 mb-4 fs-2">Shipping Address</h1>
+
+                <div class="mb-2 row">
+                    <label for="shipping-address" class="col-sm-3 col-form-label">Address:</label>
+                    <div class="col-sm-5">
+                        <textarea class="form-control" value="<?php echo $shippingAddress->address ?>"
+                            name="shipping[address]" id="shipping-address" cols="30" rows="2"
+                            placeholder="Address Line..."><?php echo $shippingAddress->address ?></textarea>
+                    </div>
+                </div>
+
+
+                <div class="mb-2 row">
+                    <label for="shipping-city" class="col-sm-3 col-form-label">City:</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="shipping[city]"
+                            value="<?php echo $shippingAddress->city ?>" id="shipping-city" placeholder="City...">
+                    </div>
+                </div>
+
+                <div class="mb-2 row">
+                    <label for="shipping-zipcode" class="col-sm-3 col-form-label">Zipcode:</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="shipping[zipcode]"
+                            value="<?php echo $shippingAddress->zipcode ?>" id="shipping-zipcode"
+                            placeholder="Zipcode...">
+                    </div>
+                </div>
+
+                <div class="mb-2 row">
+                    <label for="shipping-state" class="col-sm-3 col-form-label">State:</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="shipping[state]"
+                            value="<?php echo $shippingAddress->state ?>" id="shipping-state" placeholder="State...">
+                    </div>
+                </div>
+
+                <div class="mb-2 row">
+                    <label for="shipping-country" class="col-sm-3 col-form-label">Country:</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="shipping[country]"
+                            value="<?php echo $shippingAddress->country ?>" id="shipping-country"
+                            placeholder="Country...">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="d-flex  mt-3">
+            <button class="btn btn-primary" type="submit">Save</button>
+        </div>
+    </form>
+    </div>
+    <?php endif; ?>
+<?php endif; ?>
+</div>

@@ -1,0 +1,27 @@
+<?php $attribute = $this->getAttribute();?>
+<?php $row = $this->getRow();?>
+<?php $options = $attribute->getOptions();?>
+<?php $optionValues = $row->getAttributeValue($attribute);
+
+if($optionValues){
+    $optionValues = explode(',', $optionValues);    
+}
+?>
+<div class="col-sm-auto">
+    <?php if($options):?>
+        <?php foreach($options->getData() as $option):?>
+        <div class="form-check">
+            <input class="form-check-input" name="attribute[<?php echo $attribute->backend_type?>][<?php echo $attribute->getId()?>][]" 
+            value="<?php echo $option->getId();?>" type="checkbox"
+            <?php
+            if($optionValues){
+            if(in_array($option->getId(),$optionValues)){echo"checked";}
+            }
+            ?>
+            ><label class="form-check-label">
+                <?php echo $option->name;?>
+            </label>
+        </div>
+        <?php endforeach;?>
+    <?php endif;?>
+</div>

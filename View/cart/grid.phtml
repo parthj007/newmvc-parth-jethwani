@@ -1,0 +1,222 @@
+<?php
+if (!isset($_SESSION['names'])) {
+    $names = $this->getProductNames();
+    $sku = [];
+    $itemName = [];
+    foreach ($names as $name) {
+        $sku[$name['product_id']] = $name['sku'];
+        $itemName[$name['product_id']] = $name['name'];
+    }
+    $methods = $this->getShippingMethods();
+    $cartItems = $this->getCartItems();
+
+    $_SESSION['names'] = $names;
+} else {
+    $_SESSION['names'] = $names;
+}
+?>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Cart</title>
+    <!-- Load Tailwind CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.17/tailwind.min.css" />
+    <link rel="stylesheet" href="Skin/Css/add.css">
+</head>
+
+<body class="flex bg-gray-300 flex-col min-h-screen">
+    <!-- Navbar -->
+    <?php require_once 'View/html/header.phtml'; ?>
+
+    <main class="flex-grow ">
+
+        <!-- Dropdowns -->
+        <div class="mx-auto max-w-7xl px-4 my-5 sm:px-6 lg:px-8">
+            <table class="cart_input_table">
+                <tr>
+                    <form action="index.php?c=cart&a=insertProduct" method="post">
+                        <input type="hidden" name="productNames"
+                            value="<?php echo json_encode($this->getProductNames()); ?>">
+                        <td class="text-right">
+                            Product:
+                        </td>
+                        <td>
+                            <select id="dropdown" name="product[product_id]"
+                                class="rounded w-full border border-gray-400 px-4 py-2">
+                                <option selected disabled value="">
+                                    Select
+                                </option>
+                                <?php foreach ($names as $name): ?>
+                                    <option value="<?php echo $name['product_id'] ?>">
+                                        <?php echo $name['name'] ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </td>
+                        <td class="justify-content-center">
+                            Quantity:<input class="border border-gray-400 rounded-lg py-2 px-4 w-24 " type="number"
+                                name="product[quantity]" value="1">
+                        </td>
+                        <td>
+                            <button
+                                class="ml-4 rounded bg-blue-500 py-2 w-full px-4 font-bold text-white hover:bg-blue-700">Add
+                                Item</button>
+                        </td>
+                    </form>
+                </tr>
+
+                <tr class="my-2">
+                    <form action="index.php?c=cart&a=updateShipMethod" method="post">
+
+                        <td class="text-right">
+                            Shipping Method:
+                        </td>
+                        <td>
+                            <select required name="shipping_method_id" id="dropdown"
+                                class="rounded w-full border border-gray-400 px-4 py-2">
+                                <option selected disabled value="">
+                                    Select
+                                </option>
+                                <?php foreach ($methods as $method): ?>
+                                    <option value="<?php echo $method['shipping_id'] ?>">
+                                        <?php echo $method['name'] ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </td>
+                        <td>
+
+                        </td>
+                        <td>
+                            <button
+                                class="ml-4 rounded bg-blue-500 py-2 px-4 w-full font-bold text-white hover:bg-blue-700">Save</button>
+                        </td>
+                    </form>
+                </tr>
+
+                <tr class="my-2">
+                    <form action="index.php?c=cart&a=updateTax" method="post">
+
+                        <td class="text-right">
+                            Tax:
+                        </td>
+                        <td>
+                            <input class="border border-gray-400 rounded-lg py-2 px-4" placeholder="Enter Tax Percent"
+                                type="number" name="">
+                        </td>
+
+                        <td></td>
+                        <td>
+                            <button
+                                class="ml-4 rounded bg-blue-500 py-2 w-full px-4 font-bold text-white hover:bg-blue-700">Save</button>
+                        </td>
+                    </form>
+                </tr>
+            </table>
+        </div>
+
+
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="py-10">
+                <h2 class="text-2xl font-bold leading-tight" style="display:inline-block; ">Cart Items
+                </h2>
+            </div>
+        </div>
+
+        <!-- Table -->
+
+        <div class="mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="overflow-hidden border-b border-gray-700 mx-auto shadow sm:rounded-lg">
+                <table class="min-w-full divide-y divide-gray-700">
+                    <thead class="bg-gray-900">
+                        <tr>
+                            <th scope="col"
+                                class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider text-white">
+                                Product Id</th>
+                            <th scope="col"
+                                class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider text-white">
+                                Name</th>
+
+                            <th scope="col"
+                                class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider text-white">
+                                SKU</th>
+
+                            <th scope="col"
+                                class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider text-white">
+                                Price</th>
+
+                            <th scope="col"
+                                class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider text-white">
+                                Quantity</th>
+
+                            <th scope="col"
+                                class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider text-white">
+                                Row Total</th>
+                            <th scope="col"
+                                class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider text-white">
+                                Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-700 bg-gray-800">
+                        <?php foreach ($cartItems as $item): ?>
+                            <tr>
+                                <td class="whitespace-nowrap text-center px-6 py-4 text-sm font-medium text-white">
+                                    <?php echo $item['product_id']; ?>
+                                </td>
+                                <td class="whitespace-nowrap text-center px-6 py-4 text-sm text-white">
+                                    <?php echo $itemName[$item['product_id']]; ?>
+                                </td>
+                                <td class="whitespace-nowrap text-center px-6 py-4 text-sm text-white">
+                                    <?php echo $sku[$item['product_id']]; ?>
+                                </td>
+                                <td class="whitespace-nowrap text-center px-6 py-4 text-sm text-white">
+                                    <?php echo $item['price']; ?>
+                                </td>
+                                <td class="whitespace-nowrap text-center px-6 py-4 text-sm text-black">
+
+                                    <input class="border border-gray-400 rounded-lg w-24 py-2 px-4"
+                                        value="<?php echo $item['quantity'] ?>" type="number"
+                                        name="quantity[<?php echo $item['product_id'] ?>]">
+
+                                </td>
+
+
+                                <td class="whitespace-nowrap text-center px-6 py-4 text-sm text-white" id="row_total">
+                                    <?php $price = $item['price'];
+                                    $quantity = $item['quantity'];
+                                    echo $price * $quantity;
+                                    ?>
+                                </td>
+
+                                <td class="whitespace-nowrap text-center px-6 py-4 text-left text-sm font-medium">
+                                    <a href="index.php?c=cart&a=delete&item_id=<?php echo $item['item_id']; ?>"
+                                        class="text-green-400 hover:text-green-200">Remove</a>
+                                </td>
+                            </tr>
+
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+        <!-- table -->
+
+
+    </main>
+
+    <?php require_once('View/html/footer.phtml'); ?>
+
+    <script>
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,7 @@
+<?php $row = $this->getRow();?>
+<?php $attribute = $this->getAttribute()?>
+
+<div class="col-sm-5">
+    <input type="text" class="form-control" name="attribute[<?php echo $attribute->backend_type;?>][<?php echo $attribute->getId();?>]" 
+    value="<?php echo $row->getAttributeValue($attribute); ?>" placeholder="Enter <?php echo $attribute->name;?>...">
+</div> 

@@ -1,0 +1,85 @@
+<?php
+$product = $this->getProduct();
+$attributes = $this->getAttributes();
+$action = $product->product_id ? 'Edit' : 'Add';
+?>
+<div class="container">
+    <form action="<?php echo $this->getUrl("save",null,["product_id" => $product->product_id],false);?>" method="post" id="product-form">
+        <div class="row">
+            <div class="col-6">
+                <h1 class="my-5 mb-4 fs-2">
+                    <?php echo $action ?> Product
+                </h1>
+
+                <div class="mb-2 row">
+                    <label for="product-name" class="col-sm-3 col-form-label">Name:</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="product[name]"
+                            value="<?php echo $product->name ?>" id="product-name"
+                            placeholder="Enter the product name...">
+                    </div>
+                </div>
+
+                <div class="mb-2 row">
+                    <label for="product-sku" class="col-sm-3 col-form-label">SKU:</label>
+                    <div class="col-sm-5">
+                        <input type="text" name="product[sku]" class="form-control" value="<?php echo $product->sku ?>"
+                            id="product-sku" placeholder="Sku...">
+                    </div>
+                </div>
+
+                <div class="mb-2 row">
+                    <label for="product-cost" class="col-sm-3 col-form-label">Cost:</label>
+                    <div class="col-sm-5">
+                        <input type="number" name="product[cost]" required class="form-control"
+                            value="<?php echo $product->cost ?>" id="product-cost" placeholder="Cost...">
+                    </div>
+                </div>
+
+                <div class="mb-2 row">
+                    <label for="product-price" class="col-sm-3 col-form-label">Price:</label>
+                    <div class="col-sm-5">
+                        <input type="number" name="product[price]" required class="form-control"
+                            value="<?php echo $product->price ?>" id="product-price" placeholder="Price...">
+                    </div>
+                </div>
+
+                <div class="mb-2 row">
+                    <label for="product-quantity" class="col-sm-3 col-form-label">Quantity:</label>
+                    <div class="col-sm-5">
+                        <input type="number" name="product[quantity]" required class="form-control"
+                            value="<?php echo $product->quantity ?>" id="product-quantity" placeholder="Quantity...">
+                    </div>
+                </div>
+
+                <div class="mb-2 row">
+                    <label for="product-status" class="col-sm-3 col-form-label">Status:</label>
+                    <div class="col-sm-3">
+                        <select class="form-select" name="product[status]" id="product-status">
+                            <?php foreach ($product->getResource()->getStatusOptions() as $key => $value): ?>
+                            <?php $selected = ($key == $product->getStatus()) ? 'selected' : ''; ?>
+                            <option value="<?php echo $key ?>" <?php echo $selected; ?>>
+                                <?php echo $value ?>
+                            </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+                <?php if($attributes): ?>
+                    <?php foreach($attributes->getData() as $attribute):?>
+                    <div class="mb-2 row">
+                        <label for="status" class="col-sm-3 col-form-label">
+                        <?php echo $attribute->name;?>:</label>
+                        <?php $this->getLayout()->createBlock('eav_attribute_inputtype')->setRow($product)->setAttribute($attribute)->render()?>
+                    </div>
+                    <?php endforeach;?>
+                <?php endif;?>
+            </div>
+
+        </div>
+        <div class="d-flex mt-5">
+            <button  type="button" onclick="ajax.setUrl('<?php echo $this->getUrl("grid");?>').call()" class="btn btn-danger me-2">Cancel</button>
+            <button class="btn btn-primary" type="button" onclick="ajax.setForm('product-form').call()">Create</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,74 @@
+<nav class="navbar py-3 navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item fs-6">
+                    <a class="nav-link text-white " href="<?php echo $this->getUrl(
+                        "index",
+                        "eav_attribute",
+                        null,
+                        true
+                    ); ?>"> Eav Attribute</a>
+                </li>
+                <li class="nav-item fs-6">
+                    <a class="nav-link text-white " href="<?php echo $this->getUrl("index", "admin", null, true);
+                    ?>">Admin</a>
+                </li>
+                <li class="nav-item fs-6">
+                    <a class="nav-link text-white " href="<?php echo $this->getUrl("index", "product", null, true);
+                    ?>">Product</a>
+                </li>
+                <li class="nav-item fs-6">
+                    <a class="nav-link text-white " href="<?php echo $this->getUrl("index", "category", null, true);
+                    ?>">Category</a>
+                </li>
+                <li class="nav-item fs-6">
+                    <a class="nav-link text-white " href="<?php echo $this->getUrl("index", "customer", null, true);
+                    ?>">Customer</a>
+                </li>
+                <li class="nav-item fs-6">
+                    <a class="nav-link text-white " href="<?php echo $this->getUrl("index", "vendor", null, true);
+                    ?>">Vendor</a>
+                </li>
+                <li class="nav-item fs-6">
+                    <a class="nav-link text-white " href="<?php echo $this->getUrl("index", "salesman", null, true);
+                    ?>">Salesman</a>
+                </li>
+                <li class="nav-item fs-6">
+                    <a class="nav-link text-white " href="<?php echo $this->getUrl(
+                        "index",
+                        "shipping_method",
+                        null,
+                        true
+                    ); ?>">Shipping
+                        Method</a>
+                </li>
+                <li class="nav-item fs-6">
+                    <a class="nav-link text-white " href="<?php echo $this->getUrl(
+                        "index",
+                        "payment_method",
+                        null,
+                        true
+                    ); ?>">Payment
+                        Method</a>
+                </li>
+                <li class="nav-item fs-6">
+                    <a class="nav-link text-white " href="<?php echo $this->getUrl("grid", "item", null, true);
+                    ?>">Item</a>
+                </li>
+                <li class="nav-item fs-6">
+                    <a class="nav-link text-white " href="<?php echo $this->getUrl("grid", "brand", null, true);
+                    ?>">Brand</a>
+                </li>
+                 <li class="nav-item fs-6">
+                    <a class="nav-link text-white " href="<?php echo $this->getUrl("new", "quote", null, true);
+                    ?>">Quote</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

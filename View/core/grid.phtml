@@ -1,0 +1,57 @@
+<?php
+$rows = $this->getCollection();
+?>
+
+<div class="container py-4 pt-5">
+	<div class="row">
+		<div class="col-md-12 d-flex align-items-center">
+			<h1 class="me-auto fs-2"><?php echo $this->getTitle()?></h1>
+
+			<?php foreach($this->getButtons() as $key=>$button):?>
+			<button onclick="ajax.setUrl('<?php echo $button['url'];?>').call()" class="btn btn-primary">
+				<?php echo $button['title']?></button>
+			<?php endforeach;?>		
+		</div>
+	</div>
+</div>
+<div class="responsive">
+
+	<table class="table table-striped">
+		<thead>
+			<tr class="text-center">
+				<?php foreach ($this->getColumns() as $key => $column): ?>
+				<th scope="col"><?php echo $column['title']?></th>
+				<?php endforeach;?>
+				<?php foreach ($this->getActions() as $key => $action): ?>
+				<th scope="col"><?php echo $action['title']?></th>
+				<?php endforeach;?>
+
+			</tr>
+		</thead>
+		<tbody class="text-center">
+			<?php if (!$rows): ?>
+				<tr>
+					<td colspan="11">No Records Found</td>
+				</tr>
+			<?php else:?>
+				<?php foreach ($rows->getData() as $row): ?>
+				<tr>
+					<?php foreach ($this->getColumns() as $key => $column): ?>
+					<td>
+						<?php echo $this->getColumnValue($row, $key); ?>
+					</td>
+					<?php endforeach;?>
+
+					<?php foreach ($this->getActions() as $key => $action): ?>
+					<td>
+						<button class="btn btn-success py-1 edit-btn" type="button"
+						onclick="ajax.setUrl('<?php $method = $action['method']; echo $this->$method($row, $key);?>').call()">
+								<?php echo $action['title']?>
+							</button>
+					</td>
+					<?php endforeach;?>
+				</tr>
+			<?php endforeach; endif; ?>
+		</tbody>
+	</table>
+</div>

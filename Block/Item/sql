@@ -1,0 +1,4 @@
+"SELECT I.*,Price.`value`as Price,Cost.`value` as Cost,Color.value as Color from `item` I 
+LEFT JOIN `item_varchar` Price ON Price.`entity_id` = I.`item_id` AND Price.`attribute_id` = 58
+LEFT JOIN `item_varchar` Cost ON Cost.`entity_id` = I.`item_id` AND Cost.`attribute_id` = 59
+LEFT JOIN `item_varchar` Color ON Color.`entity_id` = I.`item_id` AND Color.`attribute_id` = 60";

@@ -1,0 +1,19 @@
+<?php $row = $this->getRow();?>
+<?php $attribute = $this->getAttribute();?>
+<?php $options = $attribute->getOptions();?>
+<?php $value=$row->getAttributeValue($attribute);?>
+
+<div class="col-sm-auto">
+<?php if($options):?>
+  <?php foreach($options->getData() as $option):?>
+    <div class="form-check">
+      <input class="form-check-input" value="<?php echo $option->getId();?>" type="radio" 
+      name="attribute[<?php echo $attribute->backend_type?>][<?php echo $attribute->getId()?>]"
+      <?php if($option->getId() == $value){echo "checked";} ?>>
+      <label class="form-check-label">
+      <?php echo $option->name?>
+      </label>
+    </div>
+  <?php endforeach;?>
+<?php endif;?>
+</div>

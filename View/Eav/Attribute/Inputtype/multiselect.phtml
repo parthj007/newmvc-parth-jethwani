@@ -1,0 +1,25 @@
+<?php $row = $this->getRow();?>
+<?php $attribute = $this->getAttribute();?>
+<?php $options = $attribute->getOptions();?>
+<?php $optionValues = $row->getAttributeValue($attribute);
+if($optionValues){
+    $optionValues = explode(',', $optionValues);    
+}
+?>
+<?php if($options):?>
+<div class="col-sm-auto form-floating">
+  <select class="form-select pt-2" name="attribute[<?php echo $attribute->backend_type?>][<?php echo $attribute->getId()?>][]" id="exampleFormControlSelect2" multiple>
+    <?php foreach($options->getData() as $option):?>
+      <?php 
+        $selected = '';
+        if($optionValues){
+          $selected = (in_array($option->getId(), $optionValues)) ? 'selected' : '';
+        }
+      ?>
+    <option value="<?php echo $option->getId()?>" <?php echo $selected;?>>
+      <?php echo $option->name?>
+    </option>
+    <?php endforeach;?>
+  </select>
+</div>
+<?php endif;?>

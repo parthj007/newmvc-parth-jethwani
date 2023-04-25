@@ -1,0 +1,182 @@
+<?php $attribute = $this->getAttribute();
+$options = $this->getOptions();
+$entities = $this->getEntities();
+?>
+
+<div class="container">
+    <form action="<?php echo $this->getUrl("save",null,["id"=>$attribute->attribute_id],true) ?>" method="post" id="eav-attribute-form">
+        <div class="row">
+            <div class="col-6">
+                <h1 class="my-5 mb-4 fs-2">Edit Attribute</h1>
+                <div class="mb-2 row">
+                    <label for="attr-entity-type-id" class="col-sm-3 col-form-label">Entity Type:</label>
+                    <div class="col-sm-auto">
+                        <select class="form-select " name="attribute[entity_type_id]"
+                            id="attr-entity-type-id">
+                            <?php foreach ($entities->getData() as $entity): ?>
+                                <?php $selected = $entity->entity_type_id == $attribute->entity_type_id ? 'selected' : ''; ?>
+                                <option value="<?php echo $entity->entity_type_id; ?>" <?php echo $selected; ?>>
+                                    <?php echo $entity->name; ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-2 row">
+                    <label for="attr-code" class="col-sm-3 col-form-label">Code:</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="attribute[code]"
+                            value="<?php echo $attribute->code ?>" id="attr-code"
+                            placeholder="Enter the attribute code name...">
+                    </div>
+                </div>
+
+                <div class="mb-2 row">
+                    <label for="attr-name" class="col-sm-3 col-form-label">Name:</label>
+                    <div class="col-sm-5">
+                        <input type="text" name="attribute[name]" class="form-control"
+                            value="<?php echo $attribute->name ?>" id="attr-name" placeholder="Attribute name...">
+                    </div>
+                </div>
+
+                <div class="mb-2 row">
+                    <label for="attr-input-type" class="col-sm-3 col-form-label">Input Type:</label>
+                    <div class="col-sm-auto">
+                        <select class="form-select cursor-pointer" name="attribute[input_type]" id="attr-input-type">
+                            <?php foreach ($attribute->getResource()->getInputTypeOptions() as $key => $value): ?>
+                                <?php $selected = ($key == $attribute->getInputType()) ? 'selected' : ''; ?>
+                                <option value="<?php echo $key ?>" <?php echo $selected; ?>>
+                                    <?php echo $value ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-2 row">
+                    <label for="attr-backend-type" class="col-sm-3 col-form-label">Backend Type:</label>
+                    <div class="col-sm-3">
+                        <select class="form-select " name="attribute[backend_type]" id="attr-backend-type">
+                            <option value="int">Integer</option>
+                            <option value="varchar">Varchar</option>
+                            <option value="decimal">Decimal</option>
+                            <option value="datetime">Date and Time</option>
+                            <option value="text">Text</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-2 row">
+                    <label for="attr-status" class="col-sm-3 col-form-label">Status:</label>
+                    <div class="col-sm-auto">
+                        <select class="form-select" name="attribute[status]" id="attr-status">
+                            <?php foreach ($attribute->getResource()->getStatusOptions() as $key => $value): ?>
+                                <?php $selected = ($key == $attribute->getStatus()) ? 'selected' : ''; ?>
+                                <option value="<?php echo $key ?>" <?php echo $selected; ?>>
+                                    <?php echo $value ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-2 row">
+                    <label for="attr-backend-model" class="col-sm-3 col-form-label">Backend Model:</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="attribute[backend_model]"
+                            value="<?php echo $attribute->backend_model ?>" id="attr-backend-model"
+                            placeholder="Backend model...">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="container" style="display: none" id="inputTypeOptionsDiv">
+                    <h1 class="my-5 mb-4 fs-2">Input Type Options</h1>
+                    <div class="row mb-2">
+                        <label class="col-sm-5 col-form-label" id="optionLabel"></label>
+                        <label class="col-sm-3 col-form-label" id="positionLabel"></label>
+                        <div class="col-md-3">
+                            <input type="button" id="addOption" class="btn btn-primary" value="Add">
+                        </div>
+                    </div>
+                    <div id="inputTypeOptionsContainer">
+                        <div id="defaultOptionExist">
+                            <?php if ($options): ?>
+                                <?php foreach ($options->getData() as $option): ?>
+                                    <div class="row mb-2">
+                                        <div class="col-md-5">
+                                            <input type="text" class="form-control"
+                                                name="options[exists][<?php echo $option->option_id ?>]"
+                                                value="<?php echo $option->name; ?>" placeholder="Enter option label...">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="number" class="form-control"
+                                                name="positions[exists][<?php echo $option->option_id ?>]"
+                                                value="<?php echo $option->position; ?>" placeholder="Enter option position...">
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <input type="button" class="btn btn-danger removeOption" value="Delete">
+                                        </div>
+                                    </div>
+                                <?php endforeach;?>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex mt-5">
+            <button onclick="ajax.setUrl('<?php echo $this->getUrl('grid') ?>').call()" type="button" class="btn btn-danger me-2">Cancel</a>
+            <button class="btn btn-primary" type="button" onclick="ajax.setForm('eav-attribute-form').call()">Save</button>
+        </div>
+    </form>
+</div>
+
+
+
+<div class="defaultOption" style="display: none;">
+    <div class="row mb-2">
+        <div class="col-md-5">
+            <input type="text" class="form-control" name="options[new][]" placeholder="Enter option label...">
+        </div>
+        <div class="col-md-3">
+            <input type="number" class="form-control"
+                name="positions[new][]"
+                placeholder="Enter option position...">
+        </div>
+        <div class="col-md-4">
+            <input type="button" class="btn btn-danger removeOption" value="Delete">
+        </div>
+    </div>
+</div>
+
+<script>
+    $("#addOption").click(function () {
+        var html = $(".defaultOption").html();
+        $("#inputTypeOptionsContainer").prepend(html);
+    });
+
+    $("#inputTypeOptionsContainer").on("click", ".removeOption", function () {
+        var removeOption = $(this).closest(".row");
+        removeOption.remove();
+    });
+
+    $('#attr-input-type').change(function () {
+        var value = $(this).val();
+        var inputTypes = ['select', 'multiselect', 'radio', 'checkbox'];
+        if ($.inArray(value, inputTypes) !== -1) {
+            $('#optionLabel').text('Option Name');
+            $('#positionLabel').text('Position');
+            $('#inputTypeOptionsDiv').show();
+        } else {
+            $('#inputTypeOptionsDiv').hide();
+        }
+    });
+
+    $(document).ready(function () {
+        $('#attr-input-type').trigger('change');
+    });
+</script>

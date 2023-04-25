@@ -1,0 +1,36 @@
+<?php
+$media = $this->getMedia();
+// print_r($media);
+$action = $media->getId() ? 'Edit' : 'Add';
+?>
+
+<div class="container">
+    <form action="<?php echo $this->getUrl("save") ?>" enctype="multipart/form-data" method="post">
+        <div class="row">
+            <div class="col-6">
+                <h1 class="my-5 mb-4 fs-2">
+                    <?php echo $action ?> Media
+                </h1>
+
+                <div class="mb-2 row">
+                    <label for="media-name" class="col-sm-3 col-form-label">Media Name:</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="media[name]"
+                            value="<?php echo $media->name ?>" id="media-name"
+                            placeholder="Enter the media name...">
+                    </div>
+                </div>
+
+                <div class="input-group mb-3">
+                      <input type="file" class="form-control" name="media[image]" id="inputGroupFile02">
+                      <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                </div>
+            </div>
+
+        </div>
+        <div class="d-flex mt-5">
+            <a href="<?php echo $this->getUrl('grid') ?>" role="button" class="btn btn-danger me-2">Cancel</a>
+            <button class="btn btn-primary" type="submit">Create</button>
+        </div>
+    </form>
+</div>

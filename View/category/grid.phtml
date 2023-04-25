@@ -1,0 +1,73 @@
+<?php
+$categories = $this->getCategories();
+$pathCategories = $this->getPathCategories();
+
+
+?>
+
+<div class="container py-4 pt-5">
+	<div class="row">
+		<div class="col-md-12 d-flex align-items-center">
+			<h1 class="me-auto fs-2">Manage Category</h1>
+			<a href="<?php echo $this->getUrl('add'); ?>" class="btn btn-primary">Add Category</a>
+		</div>
+	</div>
+</div>
+<div class="responsive">
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">Category Id</th>
+				<th scope="col">Path</th>
+				<th scope="col">Name</th>
+				<th scope="col">Status</th>
+				<th scope="col">Created At</th>
+				<th scope="col">Updated At</th>
+				<th scope="col">EDIT</th>
+				<th scope="col">DELETE</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php if (!$categories): ?>
+				<tr>
+					<td colspan="8" class="text-center">No Records Found</td>
+				</tr>
+			<?php else:
+				foreach ($categories->getData() as $category): ?>
+					<tr>
+						<td>
+							<?php echo $category->category_id; ?>
+						</td>
+						<td>
+							<?php echo $pathCategories[$category->category_id]; ?>
+						</td>
+						<td>
+							<?php echo $category->name; ?>
+						</td>
+						<td>
+							<?php echo $category->getStatusText(); ?>
+						</td>
+						<td>
+							<?php echo $category->created_at; ?>
+						</td>
+						<td>
+							<?php echo $category->updated_at; ?>
+						</td>
+						<td>
+							<a class="btn btn-primary py-1 edit-btn" href="<?php echo $this->getUrl("edit", null, [
+								'id' =>
+								$category->getId()
+							]) ?>">Edit</a>
+						</td>
+						<td>
+							<a class="btn btn-danger py-1 delete-btn" href="<?php echo $this->getUrl("delete", null, [
+								'id' =>
+								$category->getId()
+							]) ?>">Delete</a>
+						</td>
+					</tr>
+				<?php endforeach; endif; ?>
+		</tbody>
+	</table>
+</div>
