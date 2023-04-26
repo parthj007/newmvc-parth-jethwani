@@ -1,0 +1,225 @@
+2023-04-26 13:40:12 : Model_Core_Pager Object
+(
+    [totalRecords] => 66
+    [currentPage] => 1
+    [numberOfPages] => 7
+    [start] => 0
+    [previous] => 1
+    [next] => 2
+    [end] => 10
+    [recordPerPage] => 10
+)
+
+
+2023-04-26 13:40:12 : SELECT * FROM `product` ORDER BY 'product_id' LIMIT 0,10
+
+2023-04-26 13:40:16 : Model_Core_Pager Object
+(
+    [totalRecords] => 66
+    [currentPage] => 1
+    [numberOfPages] => 7
+    [start] => 0
+    [previous] => 1
+    [next] => 2
+    [end] => 10
+    [recordPerPage] => 10
+)
+
+
+2023-04-26 13:40:16 : SELECT * FROM `product` ORDER BY 'product_id' LIMIT 0,10
+
+2023-04-26 13:40:18 : Model_Core_Pager Object
+(
+    [totalRecords] => 66
+    [currentPage] => 2
+    [numberOfPages] => 7
+    [start] => 10
+    [previous] => 1
+    [next] => 3
+    [end] => 20
+    [recordPerPage] => 10
+)
+
+
+2023-04-26 13:40:18 : SELECT * FROM `product` ORDER BY 'product_id' LIMIT 10,10
+
+2023-04-26 13:40:19 : Model_Core_Pager Object
+(
+    [totalRecords] => 66
+    [currentPage] => 3
+    [numberOfPages] => 7
+    [start] => 20
+    [previous] => 2
+    [next] => 4
+    [end] => 30
+    [recordPerPage] => 10
+)
+
+
+2023-04-26 13:40:19 : SELECT * FROM `product` ORDER BY 'product_id' LIMIT 20,10
+
+2023-04-26 13:40:20 : Model_Core_Pager Object
+(
+    [totalRecords] => 66
+    [currentPage] => 4
+    [numberOfPages] => 7
+    [start] => 30
+    [previous] => 3
+    [next] => 5
+    [end] => 40
+    [recordPerPage] => 10
+)
+
+
+2023-04-26 13:40:20 : SELECT * FROM `product` ORDER BY 'product_id' LIMIT 30,10
+
+2023-04-26 13:40:21 : Model_Core_Pager Object
+(
+    [totalRecords] => 66
+    [currentPage] => 5
+    [numberOfPages] => 7
+    [start] => 40
+    [previous] => 4
+    [next] => 6
+    [end] => 50
+    [recordPerPage] => 10
+)
+
+
+2023-04-26 13:40:21 : SELECT * FROM `product` ORDER BY 'product_id' LIMIT 40,10
+
+2023-04-26 13:40:23 : Model_Core_Pager Object
+(
+    [totalRecords] => 66
+    [currentPage] => 6
+    [numberOfPages] => 7
+    [start] => 50
+    [previous] => 5
+    [next] => 7
+    [end] => 60
+    [recordPerPage] => 10
+)
+
+
+2023-04-26 13:40:23 : SELECT * FROM `product` ORDER BY 'product_id' LIMIT 50,10
+
+2023-04-26 13:40:24 : Model_Core_Pager Object
+(
+    [totalRecords] => 66
+    [currentPage] => 7
+    [numberOfPages] => 7
+    [start] => 60
+    [previous] => 6
+    [next] => 7
+    [end] => 70
+    [recordPerPage] => 10
+)
+
+
+2023-04-26 13:40:24 : SELECT * FROM `product` ORDER BY 'product_id' LIMIT 60,10
+
+2023-04-26 13:40:26 : Model_Core_Pager Object
+(
+    [totalRecords] => 66
+    [currentPage] => 1
+    [numberOfPages] => 7
+    [start] => 0
+    [previous] => 1
+    [next] => 2
+    [end] => 10
+    [recordPerPage] => 10
+)
+
+
+2023-04-26 13:40:26 : SELECT * FROM `product` ORDER BY 'product_id' LIMIT 0,10
+
+2023-04-26 13:40:37 : Model_Core_Pager Object
+(
+    [totalRecords] => 66
+    [currentPage] => 1
+    [numberOfPages] => 7
+    [start] => 0
+    [previous] => 1
+    [next] => 2
+    [end] => 10
+    [recordPerPage] => 10
+)
+
+
+2023-04-26 13:40:37 : SELECT * FROM `product` ORDER BY 'product_id' LIMIT 0,10
+
+2023-04-26 13:40:39 : Model_Core_Pager Object
+(
+    [totalRecords] => 66
+    [currentPage] => 1
+    [numberOfPages] => 7
+    [start] => 0
+    [previous] => 1
+    [next] => 2
+    [end] => 10
+    [recordPerPage] => 10
+)
+
+
+2023-04-26 13:40:39 : SELECT * FROM `product` ORDER BY 'product_id' LIMIT 0,10
+
+2023-04-26 13:40:40 : Model_Core_Pager Object
+(
+    [totalRecords] => 66
+    [currentPage] => 1
+    [numberOfPages] => 7
+    [start] => 0
+    [previous] => 1
+    [next] => 2
+    [end] => 10
+    [recordPerPage] => 10
+)
+
+
+2023-04-26 13:40:40 : SELECT * FROM `product` ORDER BY 'product_id' LIMIT 0,10
+
+2023-04-26 13:40:41 : Model_Core_Pager Object
+(
+    [totalRecords] => 66
+    [currentPage] => 1
+    [numberOfPages] => 7
+    [start] => 0
+    [previous] => 1
+    [next] => 2
+    [end] => 10
+    [recordPerPage] => 10
+)
+
+
+2023-04-26 13:40:41 : SELECT * FROM `product` ORDER BY 'product_id' LIMIT 0,10
+
+2023-04-26 13:40:44 : Model_Core_Pager Object
+(
+    [totalRecords] => 66
+    [currentPage] => 7
+    [numberOfPages] => 7
+    [start] => 60
+    [previous] => 6
+    [next] => 7
+    [end] => 70
+    [recordPerPage] => 10
+)
+
+
+2023-04-26 13:40:44 : SELECT * FROM `product` ORDER BY 'product_id' LIMIT 60,10
+
+2023-04-26 13:40:46 : Model_Core_Pager Object
+(
+    [totalRecords] => 66
+    [currentPage] => 1
+    [numberOfPages] => 7
+    [start] => 0
+    [previous] => 1
+    [next] => 2
+    [end] => 10
+    [recordPerPage] => 10
+)
+
+
+2023-04-26 13:40:46 : SELECT * FROM `product` ORDER BY 'product_id' LIMIT 0,10
+
