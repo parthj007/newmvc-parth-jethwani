@@ -8,6 +8,14 @@ class Controller_Core_Action
 	protected $view = null;
 	protected $layout = null;
 	protected $title = null;
+	protected $_pager = null;
+
+
+	public function getPager()
+	{
+		$this->_pager = Ccc::getModel("Model_Core_Pager");
+		return $this->_pager;
+	}
 
 	public function setLayout(Block_Core_Layout $layout)
 	{

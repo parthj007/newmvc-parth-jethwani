@@ -1,6 +1,7 @@
 <?php
 class Block_Product_Grid extends Block_Core_Grid
 {
+
     public function __construct()
     {
         parent::__construct();
@@ -81,11 +82,25 @@ class Block_Product_Grid extends Block_Core_Grid
         return parent::_prepareButtons();
     }
 
+
+    public function getNumberOfRecords($product)
+    {
+        $sql = "SELECT count('product_id') FROM `product`";
+        $totalRecords = $product->fetchRow($sql);
+        $totalRecords = $totalRecords->getData("count('product_id')");
+        return $totalRecords;
+    }
+
+
     public function getCollection()
     {
         $product = Ccc::getModel('product');
-        $sql = "SELECT * FROM `{$product->getResource()->getTableName()}` 
-            ORDER BY `{$product->getResource()->getPrimaryKey()}` DESC";
+        $currentPage = $this->getData("page");
+        Ccc::log($currentPage,"currentPage.log");
+        $pager = $this->getPager($this->getNumberOfRecords($product),$currentPage);
+        Ccc::log($pager,"pager.log");
+        $sql = "SELECT * FROM `product` ORDER BY 'product_id' LIMIT $pager->start,$pager->recordPerPage";
+        Ccc::log($sql,"pager.log");
         return $product->fetchAll($sql);
     }
 }

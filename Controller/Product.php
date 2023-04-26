@@ -3,6 +3,7 @@ class Controller_Product extends Controller_Core_Action
 {
 
 
+	
 	public function indexAction()
 	{
 		try {
@@ -21,8 +22,8 @@ class Controller_Product extends Controller_Core_Action
 		try {
 			$layout = $this->getLayout();
 			$this->_setTitle("Product");
-			$gridHtml = $layout->createBlock('Product_Grid')->toHtml();
-			Ccc::log($gridHtml,"grid.log");
+			$currentPage = $this->getRequest()->getParams("page");
+			$gridHtml = $layout->createBlock('Product_Grid')->setData(["page"=>$currentPage])->toHtml();
 			echo json_encode(["html"=>$gridHtml,"element"=>"content-html"]);
 			@header("Content-Type:application/json");
 			

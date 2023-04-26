@@ -14,8 +14,15 @@ $rows = $this->getCollection();
 		</div>
 	</div>
 </div>
-<div class="responsive">
 
+<select>
+	<option>0-10</option>
+	<option>0-20</option>
+	<option>0-50</option>
+</select>
+
+
+<div class="responsive">
 	<table class="table table-striped">
 		<thead>
 			<tr class="text-center">
@@ -51,7 +58,37 @@ $rows = $this->getCollection();
 					</td>
 					<?php endforeach;?>
 				</tr>
-			<?php endforeach; endif; ?>
+			<?php endforeach;?> 
+
+ <nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-end">
+  	<li class="page-item">
+      <a class="page-link" href="http://localhost/newmvc-parthj/index.php?a=index&c=product&page=<?php echo "1";?>" tabindex="-1">Start</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="http://localhost/newmvc-parthj/index.php?a=index&c=product&page=<?php echo $this->_pager->currentPage-1;?>">Previous</a>
+    </li>
+    <?php for ($i=1; $i <= $this->_pager->numberOfPages; $i++) { ?>
+    	<li class="page-item"><a class="page-link" 
+    		href="http://localhost/newmvc-parthj/index.php?a=index&c=product&page=<?php echo $i; ?>">
+    		<?php echo $i; ?></a></li>
+   <?php }?>
+    <li class="page-item">
+      <a class="page-link" href="http://localhost/newmvc-parthj/index.php?a=index&c=product&page=<?php if($this->_pager->currentPage+1 > $this->_pager->numberOfPages)
+      {
+      	echo 1;
+      }
+       else{
+       	echo $this->_pager->currentPage+1;
+       }?>
+       ">Next</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="http://localhost/newmvc-parthj/index.php?a=index&c=product&page=<?php echo $this->_pager->numberOfPages;?>">End</a>
+    </li>
+  </ul>
+</nav> 
+		<?php endif; ?>			
 		</tbody>
 	</table>
 </div>

@@ -5,6 +5,13 @@ class Block_Core_Grid extends Block_Core_Template
     protected $_columns = [];
     protected $_actions = [];
     protected $_buttons = [];
+    protected $_pager = null;
+
+    public function getPager($totalRecords,$currentPage)
+    {
+       $this->_pager = new Model_Core_Pager($totalRecords,$currentPage);
+       return $this->_pager;
+    }
 
     public function __construct()
     {
@@ -156,11 +163,10 @@ class Block_Core_Grid extends Block_Core_Template
         return $this->_title;
     }
 
+
+
     public function getCollection()
     {
-        $product = Ccc::getModel('product');
-        $sql = "SELECT * FROM `{$product->getResource()->getTableName()}` 
-            ORDER BY `{$product->getResource()->getPrimaryKey()}` DESC";
-        return $product->fetchAll($sql);
+        return $this;
     }
 }
