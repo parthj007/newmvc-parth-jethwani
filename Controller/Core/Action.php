@@ -9,7 +9,7 @@ class Controller_Core_Action
 	protected $layout = null;
 	protected $title = null;
 	protected $_pager = null;
-
+	protected $_response = null;
 
 	public function getPager()
 	{
@@ -128,10 +128,28 @@ class Controller_Core_Action
 		throw new Exception("Method:{$action} does not exists.", 1);
 	}
 
-	public function render()
+	protected function setResponse(Model_Core_Response $response)
 	{
-		$this->getView()->render();
+		$this->_response = $response;
+		return $this;
 	}
+
+	public function getResponse()
+	{
+		if ($this->_response != null) {
+			return $this->_response;
+		}
+		$response = new Model_Core_Response();
+		$response->setController($this);
+		$this->setResponse($response);
+		return $response;
+	}
+
+	public function renderLayout()
+    {
+        $this->getResponse()->setBody($this->getLayout()->toHtml());
+    }
+    
 	protected function _setTitle($title)
 	{
 		$this->getLayout()->getChild("head")->setTitle($title);

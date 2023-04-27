@@ -91,16 +91,14 @@ class Block_Product_Grid extends Block_Core_Grid
         return $totalRecords;
     }
 
-
     public function getCollection()
     {
         $product = Ccc::getModel('product');
-        $currentPage = $this->getData("page");
-        Ccc::log($currentPage,"currentPage.log");
-        $pager = $this->getPager($this->getNumberOfRecords($product),$currentPage);
-        Ccc::log($pager,"pager.log");
-        $sql = "SELECT * FROM `product` ORDER BY 'product_id' LIMIT $pager->start,$pager->recordPerPage";
-        Ccc::log($sql,"pager.log");
+        $pager = $this->getPager();
+        $pager->setTotalRecords($this->getNumberOfRecords($product))->caculate();
+        $start = $pager->getStartLimit();
+        $rpp = $pager->getRecordPerPage();
+        $sql = "SELECT * FROM `product` ORDER BY 'product_id' LIMIT $start,$rpp";
         return $product->fetchAll($sql);
     }
 }

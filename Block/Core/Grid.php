@@ -7,10 +7,22 @@ class Block_Core_Grid extends Block_Core_Template
     protected $_buttons = [];
     protected $_pager = null;
 
-    public function getPager($totalRecords,$currentPage)
+    public function getPager()
     {
-       $this->_pager = new Model_Core_Pager($totalRecords,$currentPage);
-       return $this->_pager;
+        if($this->_pager){
+            return $this->_pager;
+        }
+       $pager = new Model_Core_Pager();
+       $rpp = Ccc::getModel("Core_Request")->getParams("rpp",10);
+       $pager->setRecordPerPage($rpp);
+       $this->setPager($pager);
+       return $pager;
+    }
+
+    public function setPager(Model_Core_Pager $pager)
+    {       
+        $this->_pager = $pager;
+        return $this;
     }
 
     public function __construct()
@@ -102,7 +114,7 @@ class Block_Core_Grid extends Block_Core_Template
 
     public function getDeleteUrl($row, $key)
     {
-        return $this->getUrl($key, null, ['id'=>$row->getId()], true);
+        return $this->getUrl($key, null, ['id'=>$row->getId(),'page'=>$this->getPager()->getCurrentPage()], true);
     }
 
     public function getColumnValue($row, $key)
@@ -163,10 +175,24 @@ class Block_Core_Grid extends Block_Core_Template
         return $this->_title;
     }
 
+   // public function getNumberOfRecords($model)
+   //  {
+   //      $sql = "SELECT count('$model->getId()') FROM `$model`";
+   //      $totalRecords = $product->fetchRow($sql);
+   //      $totalRecords = $totalRecords->getData("count('product_id')");
+   //      return $totalRecords;
+   //  }
 
-
-    public function getCollection()
-    {
-        return $this;
-    }
+   //  public function getCollection()
+   //  {
+   //      $model = Ccc::getModel($this->getResource()->getTableName());
+   //      $pager = $this->getPager();
+   //      $pager->setTotalRecords($this->getNumberOfRecords($model))->caculate();
+   //      $start = $pager->getStartLimit();
+   //      $rpp = $pager->getRecordPerPage();
+   //      $table = $this->getResource()->getTableName();
+   //      $primaryKey = $this->getResource()->getPrimaryKey();
+   //      $sql = "SELECT * FROM `$table` ORDER BY '$primaryKey' LIMIT $start,$rpp";
+   //      return $product->fetchAll($sql);
+   //  }
 }

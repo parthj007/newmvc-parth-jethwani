@@ -2,9 +2,7 @@
 class Model_Core_Response
 {
 	protected $_jsonData = [
-		'status' => 'success',
-		'message' => 'success',
-		' ' => null
+		
 	];
 
 	protected $_controller = null;
@@ -50,6 +48,7 @@ class Model_Core_Response
 	public function setMessageResponse()
 	{
 		$messageHtml = $this->getController()->getLayout()->createBlock('Html_Message')->toHtml();
+		Ccc::log($messageHtml,"message.log");
 		$this->setJsonData(['messageBlockHtml' => $messageHtml]);
 	}
 }

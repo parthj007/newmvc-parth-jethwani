@@ -47,7 +47,7 @@ var ajax = {
 		}).done(function(response){
 			// alert(response.html);
 			$("#"+response.element).html(response.html);
-			
+			$("#message-html").html(response.messageBlockHtml);
 		})
 	}
 };

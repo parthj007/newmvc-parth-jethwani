@@ -1,6 +1,5 @@
-<?php
-$rows = $this->getCollection();
-?>
+<?php $rows = $this->getCollection();?>
+<?php $pager = $this->getPager();?>
 
 <div class="container py-4 pt-5">
 	<div class="row">
@@ -14,12 +13,25 @@ $rows = $this->getCollection();
 		</div>
 	</div>
 </div>
+	<input type="hidden" name="" value="<?php $pager->getCurrentPage();?>">
+	<select onchange="changeRpp(this.value)" id="rppdd" name="record-per-page">
+	<?php foreach($pager->getRecordPerPageOptions() as $rpp):?>
+	<?php $selected = $pager->getRecordPerPage() == $rpp ? "selected" : "" ;?>
+	<option value="<?php echo $rpp; ?>" <?php echo $selected; ?>><?php echo $rpp; ?> </option>
+	<?php endforeach; ?>
+	</select>
 
-<select>
-	<option>0-10</option>
-	<option>0-20</option>
-	<option>0-50</option>
-</select>
+<script type="text/javascript">
+	function changeRpp(value){
+		ajax.setUrl('<?php echo $this->getUrl(null,null,["page"=>1],true)?>&rpp='+value).call();
+	}
+</script>
+
+<form id="csv-form" action="<?php $this->getUrl("upload",null,null,true);?>">
+	<label for="csvfile">Upload CSV</label>
+	<input type="file" name="csvfile">
+	<button type="button" onclick="ajax.setForm('csv-form').call()"></button>
+</form>
 
 
 <div class="responsive">
@@ -63,32 +75,21 @@ $rows = $this->getCollection();
  <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-end">
   	<li class="page-item">
-      <a class="page-link" href="http://localhost/newmvc-parthj/index.php?a=index&c=product&page=<?php echo "1";?>" tabindex="-1">Start</a>
+      <button class="page-link" type="button" onclick="ajax.setUrl('<?php echo $this->getUrl("grid",null,['page'=>$pager->getStart(),'rpp'=>$pager->getRecordPerPage()],true);?>').call()">Start</button>
     </li>
     <li class="page-item">
-      <a class="page-link" href="http://localhost/newmvc-parthj/index.php?a=index&c=product&page=<?php echo $this->_pager->currentPage-1;?>">Previous</a>
-    </li>
-    <?php for ($i=1; $i <= $this->_pager->numberOfPages; $i++) { ?>
-    	<li class="page-item"><a class="page-link" 
-    		href="http://localhost/newmvc-parthj/index.php?a=index&c=product&page=<?php echo $i; ?>">
-    		<?php echo $i; ?></a></li>
-   <?php }?>
-    <li class="page-item">
-      <a class="page-link" href="http://localhost/newmvc-parthj/index.php?a=index&c=product&page=<?php if($this->_pager->currentPage+1 > $this->_pager->numberOfPages)
-      {
-      	echo 1;
-      }
-       else{
-       	echo $this->_pager->currentPage+1;
-       }?>
-       ">Next</a>
+      <button class="page-link" type="button" onclick="ajax.setUrl('<?php echo $this->getUrl("grid",null,['page'=>$pager->getPrev(),'rpp'=>$pager->getRecordPerPage()],true);?>').call()">Previous</button>
     </li>
     <li class="page-item">
-      <a class="page-link" href="http://localhost/newmvc-parthj/index.php?a=index&c=product&page=<?php echo $this->_pager->numberOfPages;?>">End</a>
+      <button class="page-link" type="button" onclick="ajax.setUrl('<?php echo $this->getUrl("grid",null,['page'=>$pager->getNext(),'rpp'=>$pager->getRecordPerPage()],true);?>').call()">Next</button>
+    </li>
+    <li class="page-item">
+      <button class="page-link" type="button" onclick="ajax.setUrl('<?php echo $this->getUrl("grid",null,['page'=>$pager->getEnd(),'rpp'=>$pager->getRecordPerPage()],true);?>').call()">End</button>
     </li>
   </ul>
 </nav> 
 		<?php endif; ?>			
 		</tbody>
+		<p> Page <b><?php echo $pager->getCurrentPage();?> </b> Of <?php echo $pager->getNumberOfPages();?></p>
 	</table>
 </div>
