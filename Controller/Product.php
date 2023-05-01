@@ -1,7 +1,6 @@
-<?php
+ <?php
 class Controller_Product extends Controller_Core_Action
 {
-
 
 	public function indexAction()
 	{
@@ -10,7 +9,7 @@ class Controller_Product extends Controller_Core_Action
 			$this->_setTitle("Product");
 			$index = $layout->createBlock('Core_Template');
 			$layout->getChild("content")->addChild("index",$index);
-			$layout->render();
+			$this->renderLayout();
 		} catch (Exception $e) {
 			$this->getMessageModel()->addMessage($e->getMessage(), Model_Core_Message::FAILURE);
 		}
@@ -19,13 +18,11 @@ class Controller_Product extends Controller_Core_Action
 	public function gridAction()
 	{
 		try {
+
 			$layout = $this->getLayout();
 			$this->_setTitle("Product");
 			$gridHtml = $layout->createBlock('Product_Grid')->toHtml();
-			Ccc::log($gridHtml,"grid.log");
-			echo json_encode(["html"=>$gridHtml,"element"=>"content-html"]);
-			@header("Content-Type:application/json");
-			
+			$this->getResponse()->jsonResponse(["html"=>$gridHtml,"element"=>"content-html"]);
 		} catch (Exception $e) {
 			$this->getMessageModel()->addMessage($e->getMessage(), Model_Core_Message::FAILURE);
 		}
@@ -41,8 +38,7 @@ class Controller_Product extends Controller_Core_Action
 			$product = Ccc::getModel('product');
 			$addHtml = $layout->createBlock('Product_Edit')->setData(['product' => $product])->toHtml();
 
-			echo json_encode(["html"=>$addHtml,"element"=>"content-html"]);
-			@header("Content-Type:application/json");
+			$this->getResponse()->jsonResponse(["html"=>$addHtml,"element"=>"content-html"]);
 			
 		} catch (Exception $e) {
 			$this->getMessageModel()->addMessage($e->getMessage(), Model_Core_Message::FAILURE);
@@ -64,8 +60,7 @@ class Controller_Product extends Controller_Core_Action
 			$layout = $this->getLayout();
 			$editHtml = $layout->createBlock('product_edit')->setData(['product' => $product])->toHtml();
 
-			echo json_encode(["html"=>$editHtml,"element"=>"content-html"]);
-			@header("Content-Type:application/json");
+			$this->getResponse()->jsonResponse(["html"=>$editHtml,"element"=>"content-html"]);
 
 		} catch (Exception $e) {
 			$this->getMessageModel()->addMessage($e->getMessage(), Model_Core_Message::FAILURE);
@@ -101,11 +96,8 @@ class Controller_Product extends Controller_Core_Action
 				throw new Exception("Error while saving the Product.", 1);
 			}
 
-			 if(!$attributePostData = $this->getRequest()->getPost('attribute')){
-                throw new Exception("Attribute data is not posted.", 1);
-            }
-
-            foreach($attributePostData as $backend_type => $value){
+			 if($attributePostData = $this->getRequest()->getPost('attribute')){
+             	 foreach($attributePostData as $backend_type => $value){
                 foreach($value as $attributeId => $v){
                     if(is_array($v)){
                         $v = implode(",", $v);
@@ -117,20 +109,31 @@ class Controller_Product extends Controller_Core_Action
                             VALUES('{$product->getId()}', '{$attributeId}', '{$v}') ON DUPLICATE KEY UPDATE `value` = '{$v}'";
 
                     $model->getResource()->getAdapter()->insert($sql);
-                }
+                	}
+            	}  
             }
-            
 			$this->getMessageModel()->addMessage("Product data saved successfully.");
-		} catch (Exception $e) {
-			$this->getMessageModel()->addMessage($e->getMessage(), Model_Core_Message::FAILURE);
-		}
-
 			$layout = $this->getLayout();
 			$this->_setTitle("Product");
 			$gridHtml = $layout->createBlock('Product_Grid')->toHtml();
-			echo json_encode(["html"=>$gridHtml,"element"=>"content-html"]);
-			@header("Content-Type:application/json");
+			$this->getResponse()->jsonResponse(["html"=>$gridHtml,"element"=>"content-html"]);
+		} catch (Exception $e) {
+			$this->getMessageModel()->addMessage($e->getMessage(), Model_Core_Message::FAILURE);
+		}
+		$this->redirect("grid",null,null,true);	 
 	}
+
+
+	public function importAction()
+	{
+			$layout = $this->getLayout();
+			$this->_setTitle("Import CSV");
+			$product = Ccc::getModel('product');
+			$importHtml = $layout->createBlock('Product_Import')->toHtml();
+			$this->getResponse()->jsonResponse(["html"=>$importHtml,"element"=>"content-html"]);
+	}
+
+
 
 	public function deleteAction()
 	{
@@ -158,14 +161,71 @@ class Controller_Product extends Controller_Core_Action
 			}
 
 			$this->getMessageModel()->addMessage("Product deleted successfully.");
+			$layout = $this->getLayout();
+			$this->_setTitle("Product");
+			$gridHtml = $layout->createBlock('Product_Grid')->toHtml();
+			$this->getResponse()->jsonResponse(["html"=>$gridHtml,"element"=>"content-html"]);
+
 		} catch (Exception $e) {
 			$this->getMessageModel()->addMessage($e->getMessage(), Model_Core_Message::FAILURE);
 		}
-		 	$layout = $this->getLayout();
-			$this->_setTitle("Product");
-			$gridHtml = $layout->createBlock('Product_Grid')->toHtml();
-			echo json_encode(["html"=>$gridHtml,"element"=>"content-html"]);
-			@header("Content-Type:application/json");
+		$this->redirect("grid",null,null,true);	 	
+	}
+	public function uploadAction()
+	{
+		
+		try {
+
+			echo '<pre>';
+
+			// $upload = new Model_Core_File_Upload();
+			$upload = $this->getfile();
+			$fileUploaded = $upload->setExtensions(['png','csv'])
+				->setPath('test')
+				->setFileName('test.csv')
+				->save('csv-file');
+
+			if(!$fileUploaded){
+				throw new Exception("Unable to upload file.", 1);
+			}
+
+			$csv = new Model_Core_File_Csv();
+			$rows = $csv->setPath('test')->setFileName($upload->getFileName())->read()->getRows();
+
+			$product = Ccc::getModel("Product");
+			foreach ($rows as $row) {
+				$product->getResource()->insertUpdateOnDuplicate1($row,['sku']);
+			}
+			$this->redirect("index",null,null,true);
+		} catch (Exception $e) {
+			
+		}
+	}
+
+	public function exportAction()
+	{
+		try{
+			$sql = "SELECT * FROM `product`";
+			$model = Ccc::getModel('product');
+			$data = $model->getResource()->fetchAll($sql);
+
+			header('Content-Type: application/csv');
+			header('Content-Disposition: attachment; filename=export.csv');
+			header('Pragma: public');
+
+			$fp = fopen('php://output','w');
+			$header = [];
+			foreach($data as $row){
+				if(!$header){
+					$header = array_keys($row);
+					fputcsv($fp, $header);
+				}
+				fputcsv($fp, $row);
+			}
+			fclose($fp);
+		}catch(Exception $e){
+			$this->getMessageModel()->addMessage($e->getMessage(), Model_Core_Message::FAILURE);
+		}
 	}
 }
 ?>

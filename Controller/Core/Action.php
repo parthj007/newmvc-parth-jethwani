@@ -8,6 +8,31 @@ class Controller_Core_Action
 	protected $view = null;
 	protected $layout = null;
 	protected $title = null;
+	protected $_pager = null;
+	protected $_response = null;
+	protected $_file = null;
+
+
+	public function setfile(Model_Core_File_Upload $file)
+	{
+		$this->_file = $file;
+		return $this;
+	}
+	public function getfile()
+	{
+		if (!$this->_file) {
+			$file = new Model_Core_File_Upload();
+			$this->setfile($file);
+			return $file;
+		}
+		return $this->_file;
+	}
+
+	public function getPager()
+	{
+		$this->_pager = Ccc::getModel("Model_Core_Pager");
+		return $this->_pager;
+	}
 
 	public function setLayout(Block_Core_Layout $layout)
 	{
@@ -120,10 +145,28 @@ class Controller_Core_Action
 		throw new Exception("Method:{$action} does not exists.", 1);
 	}
 
-	public function render()
+	protected function setResponse(Model_Core_Response $response)
 	{
-		$this->getView()->render();
+		$this->_response = $response;
+		return $this;
 	}
+
+	public function getResponse()
+	{
+		if ($this->_response != null) {
+			return $this->_response;
+		}
+		$response = new Model_Core_Response();
+		$response->setController($this);
+		$this->setResponse($response);
+		return $response;
+	}
+
+	public function renderLayout()
+    {
+        $this->getResponse()->setBody($this->getLayout()->toHtml());
+    }
+    
 	protected function _setTitle($title)
 	{
 		$this->getLayout()->getChild("head")->setTitle($title);

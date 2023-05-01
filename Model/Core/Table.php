@@ -102,11 +102,13 @@ class Model_Core_Table
 
 	public function getCollection()
 	{
+		$collection = $this->getCollectionClass();
 		if ($this->collection) {
 			return $this->collection;
 		}
 
-		$collection = new($this->getCollectionClass())();
+		// $collection = new($this->getCollectionClass())();
+		$collection = new $collection();
 		$this->setCollection($collection);
 		return $collection;
 	}
@@ -121,11 +123,13 @@ class Model_Core_Table
 
 	public function getResource()
 	{
+		$resource = $this->getResourceClass();
 		if ($this->resource) {
 			return $this->resource;
 		}
 
-		$resource = new($this->getResourceClass())();
+		// $resource = new($this->getResourceClass())();
+		$resource = new $resource();
 		$this->setResource($resource);
 		return $resource;
 	}

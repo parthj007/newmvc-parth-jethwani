@@ -1,12 +1,29 @@
 <?php
 class Controller_Quote extends Controller_Core_Action
 {
+
+    public function indexAction()
+    {
+        try {
+            $layout = $this->getLayout();
+            $this->_setTitle("Quote");
+            $index = $layout->createBlock('Core_Template');
+            $layout->getChild("content")->addChild("index",$index);
+            $this->renderLayout();
+        } catch (Exception $e) {
+            $this->getMessageModel()->addMessage($e->getMessage(), Model_Core_Message::FAILURE);
+        }
+    }
+
     public function newAction()
     {
-        $layout = $this->getLayout();
-        $grid = $this->getLayout()->createBlock('Quote_Grid');
-        $layout->getChild('content')->addChild('grid', $grid);
-        $layout->render();
+        try {
+            $layout = $this->getLayout();
+            $newHtml = $this->getLayout()->createBlock('Quote_Grid')->toHtml();
+            $this->getResponse()->jsonResponse(["html"=>$newHtml,"element"=>"content-html"]);  
+        } catch (Exception $e) {
+             $this->getMessageModel()->addMessage($e->getMessage(), Model_Core_Message::FAILURE);
+        }
     }
      public function prepareQuoteAction()
     {
