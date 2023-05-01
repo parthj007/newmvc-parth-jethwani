@@ -75,7 +75,7 @@ class Block_Salesman_Grid extends Block_Core_Grid
 
     public function getPriceUrl($row, $key)
     {
-        return $this->getUrl($key, 'salesman_price', ['sid'=>$row->getId()], true);
+        return $this->getUrl($key, 'salesman_price', ['id'=>$row->getId()], true);
     }
 
     public function _prepareButtons()
@@ -87,11 +87,24 @@ class Block_Salesman_Grid extends Block_Core_Grid
         return parent::_prepareButtons();
     }
 
+     public function getNumberOfRecords()
+    {
+       $sql = "SELECT COUNT(`salesman_id`) FROM `salesman` ORDER BY `salesman_id` DESC";
+        $total = Ccc::getModel('Core_Adapter')->fetchOne($sql);
+        return $total;
+    }
+
     public function getCollection()
     {
+
         $salesman = Ccc::getModel('salesman');
+        $pager=$this->getPager();
+        $pager->setTotalRecords($this->getNumberOfRecords())->caculate();
+        $start = $pager->getStartLimit();
+        $rpp = $pager->getRecordPerPage();
         $sql = "SELECT * FROM `{$salesman->getResource()->getTableName()}` 
-            ORDER BY `{$salesman->getResource()->getPrimaryKey()}` DESC";
+            ORDER BY `{$salesman->getResource()->getPrimaryKey()}` DESC
+            LIMIT $start,$rpp";
         return $salesman->fetchAll($sql);
     }
 }

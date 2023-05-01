@@ -1,9 +1,7 @@
-<?php
+ <?php
 class Controller_Product extends Controller_Core_Action
 {
 
-
-	
 	public function indexAction()
 	{
 		try {
@@ -125,6 +123,18 @@ class Controller_Product extends Controller_Core_Action
 		$this->redirect("grid",null,null,true);	 
 	}
 
+
+	public function importAction()
+	{
+			$layout = $this->getLayout();
+			$this->_setTitle("Import CSV");
+			$product = Ccc::getModel('product');
+			$importHtml = $layout->createBlock('Product_Import')->toHtml();
+			$this->getResponse()->jsonResponse(["html"=>$importHtml,"element"=>"content-html"]);
+	}
+
+
+
 	public function deleteAction()
 	{
 		try {
@@ -160,6 +170,62 @@ class Controller_Product extends Controller_Core_Action
 			$this->getMessageModel()->addMessage($e->getMessage(), Model_Core_Message::FAILURE);
 		}
 		$this->redirect("grid",null,null,true);	 	
+	}
+	public function uploadAction()
+	{
+		
+		try {
+
+			echo '<pre>';
+
+			// $upload = new Model_Core_File_Upload();
+			$upload = $this->getfile();
+			$fileUploaded = $upload->setExtensions(['png','csv'])
+				->setPath('test')
+				->setFileName('test.csv')
+				->save('csv-file');
+
+			if(!$fileUploaded){
+				throw new Exception("Unable to upload file.", 1);
+			}
+
+			$csv = new Model_Core_File_Csv();
+			$rows = $csv->setPath('test')->setFileName($upload->getFileName())->read()->getRows();
+
+			$product = Ccc::getModel("Product");
+			foreach ($rows as $row) {
+				$product->getResource()->insertUpdateOnDuplicate1($row,['sku']);
+			}
+			$this->redirect("index",null,null,true);
+		} catch (Exception $e) {
+			
+		}
+	}
+
+	public function exportAction()
+	{
+		try{
+			$sql = "SELECT * FROM `product`";
+			$model = Ccc::getModel('product');
+			$data = $model->getResource()->fetchAll($sql);
+
+			header('Content-Type: application/csv');
+			header('Content-Disposition: attachment; filename=export.csv');
+			header('Pragma: public');
+
+			$fp = fopen('php://output','w');
+			$header = [];
+			foreach($data as $row){
+				if(!$header){
+					$header = array_keys($row);
+					fputcsv($fp, $header);
+				}
+				fputcsv($fp, $row);
+			}
+			fclose($fp);
+		}catch(Exception $e){
+			$this->getMessageModel()->addMessage($e->getMessage(), Model_Core_Message::FAILURE);
+		}
 	}
 }
 ?>

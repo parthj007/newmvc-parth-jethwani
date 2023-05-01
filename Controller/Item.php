@@ -66,7 +66,7 @@ class Controller_Item extends Controller_Core_Action
 
                     $model = Ccc::getModel("core_table");
                     $model->getResource()->setTableName("item_{$backend_type}")->setPrimaryKey("value_id");
-                    $sql = "INSERT INTO `item_{$backend_type}` (`entity_id`, `attribute_id`, `value`)
+                $sql = "INSERT INTO `item_{$backend_type}` (`entity_id`, `attribute_id`, `value`)
                             VALUES('{$item->getId()}', '{$attributeId}', '{$v}') ON DUPLICATE KEY UPDATE `value` = '{$v}'";
 
                     $model->getResource()->getAdapter()->insert($sql);

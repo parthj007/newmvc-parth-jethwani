@@ -10,6 +10,23 @@ class Controller_Core_Action
 	protected $title = null;
 	protected $_pager = null;
 	protected $_response = null;
+	protected $_file = null;
+
+
+	public function setfile(Model_Core_File_Upload $file)
+	{
+		$this->_file = $file;
+		return $this;
+	}
+	public function getfile()
+	{
+		if (!$this->_file) {
+			$file = new Model_Core_File_Upload();
+			$this->setfile($file);
+			return $file;
+		}
+		return $this->_file;
+	}
 
 	public function getPager()
 	{

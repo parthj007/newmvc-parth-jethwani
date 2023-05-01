@@ -1,0 +1,80 @@
+2023-04-30 21:44:37 : INSERT INTO `salesman` (`product_id`,`salesman_id`,`salesman_price`) VALUES ('200','26','11111') ON DUPLICATE KEY UPDATE `salesman_price`='11111' 
+
+2023-04-30 21:47:55 : INSERT INTO `salesman_price` (`product_id`,`salesman_id`,`salesman_price`) VALUES ('200','26','111') ON DUPLICATE KEY UPDATE `salesman_price`='111' 
+
+2023-04-30 21:47:55 : INSERT INTO `salesman_price` (`product_id`,`salesman_id`,`salesman_price`) VALUES ('241','26','12121') ON DUPLICATE KEY UPDATE `salesman_price`='12121' 
+
+2023-04-30 21:49:30 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Chair','ch123','10000','12000','10') ON DUPLICATE KEY UPDATE `0`='sku' 
+
+2023-04-30 21:52:20 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Chair','ch123','10000','12000','10') ON DUPLICATE KEY UPDATE `0`='Array',`1`='Array',`2`='Array',`3`='Array',`4`='Array',`5`='Array',`6`='Array',`7`='Array',`8`='Array',`9`='Array',`10`='Array' 
+
+2023-04-30 21:52:34 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Chair','ch123','10000','12000','10') ON DUPLICATE KEY UPDATE `0`='Array',`1`='Array',`2`='Array',`3`='Array',`4`='Array',`5`='Array',`6`='Array',`7`='Array',`8`='Array',`9`='Array',`10`='Array' 
+
+2023-04-30 21:53:13 : INSERT INTO `product` (`0`,`1`,`2`,`3`,`4`,`5`,`6`,`7`,`8`,`9`,`10`) VALUES ('Array','Array','Array','Array','Array','Array','Array','Array','Array','Array','Array') ON DUPLICATE KEY UPDATE `0`='Array',`1`='Array',`2`='Array',`3`='Array',`4`='Array',`5`='Array',`6`='Array',`7`='Array',`8`='Array',`9`='Array',`10`='Array' 
+
+2023-04-30 21:55:13 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Chair','ch123','10000','12000','10') ON DUPLICATE KEY UPDATE `sku`='ch123'
+
+2023-04-30 21:55:13 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Table','tb122','2000','2500','20') ON DUPLICATE KEY UPDATE `sku`='tb122'
+
+2023-04-30 21:55:13 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Fan','fn1','1500','2000','21') ON DUPLICATE KEY UPDATE `sku`='fn1'
+
+2023-04-30 21:55:13 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Chair','asa','10000','12000','10') ON DUPLICATE KEY UPDATE `sku`='asa'
+
+2023-04-30 21:55:13 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Table','asasda','2000','2500','20') ON DUPLICATE KEY UPDATE `sku`='asasda'
+
+2023-04-30 21:55:13 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Fan','dsadas','1500','2000','21') ON DUPLICATE KEY UPDATE `sku`='dsadas'
+
+2023-04-30 21:55:13 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Fan','fn112','1500','2000','21') ON DUPLICATE KEY UPDATE `sku`='fn112'
+
+2023-04-30 21:55:13 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Chair','asa','10000','12000','10') ON DUPLICATE KEY UPDATE `sku`='asa'
+
+2023-04-30 21:55:13 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Table','ajjsa','2000','2500','20') ON DUPLICATE KEY UPDATE `sku`='ajjsa'
+
+2023-04-30 21:55:13 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Fan','sdadafasd','1500','2000','21') ON DUPLICATE KEY UPDATE `sku`='sdadafasd'
+
+2023-04-30 21:55:13 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Fan','sdadafasd','1500','200','21') ON DUPLICATE KEY UPDATE `sku`='sdadafasd'
+
+2023-04-30 21:55:50 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Chair','ch123','10000','12000','10') ON DUPLICATE KEY UPDATE `sku`='ch123'
+
+2023-04-30 21:55:50 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Table','tb122','2000','2500','20') ON DUPLICATE KEY UPDATE `sku`='tb122'
+
+2023-04-30 21:55:50 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Fan','fn1','1500','2000','21') ON DUPLICATE KEY UPDATE `sku`='fn1'
+
+2023-04-30 21:55:50 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Chair','asa','10000','12000','10') ON DUPLICATE KEY UPDATE `sku`='asa'
+
+2023-04-30 21:55:50 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Table','asasda','2000','2500','20') ON DUPLICATE KEY UPDATE `sku`='asasda'
+
+2023-04-30 21:55:50 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Fan','dsadas','1500','2000','21') ON DUPLICATE KEY UPDATE `sku`='dsadas'
+
+2023-04-30 21:55:50 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Fan','fn112','1500','2000','21') ON DUPLICATE KEY UPDATE `sku`='fn112'
+
+2023-04-30 21:55:50 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Chair','asa','10000','12000','10') ON DUPLICATE KEY UPDATE `sku`='asa'
+
+2023-04-30 21:55:50 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Table','ajjsa','2000','2500','20') ON DUPLICATE KEY UPDATE `sku`='ajjsa'
+
+2023-04-30 21:55:50 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Fan','sdadafasd','1500','2000','21') ON DUPLICATE KEY UPDATE `sku`='sdadafasd'
+
+2023-04-30 21:55:50 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Fan','sdadafasd','1500','200','21') ON DUPLICATE KEY UPDATE `sku`='sdadafasd'
+
+2023-04-30 21:56:19 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Chair','ch123','10000','12000','10') ON DUPLICATE KEY UPDATE `sku`='ch123'
+
+2023-04-30 21:56:19 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Table','tb122','2000','2500','20') ON DUPLICATE KEY UPDATE `sku`='tb122'
+
+2023-04-30 21:56:19 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Fan','fn1','1500','2000','21') ON DUPLICATE KEY UPDATE `sku`='fn1'
+
+2023-04-30 21:56:19 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Chair','asa','10000','12000','10') ON DUPLICATE KEY UPDATE `sku`='asa'
+
+2023-04-30 21:56:19 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Table','asasda','2000','2500','20') ON DUPLICATE KEY UPDATE `sku`='asasda'
+
+2023-04-30 21:56:19 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Fan','dsadas','1500','2000','21') ON DUPLICATE KEY UPDATE `sku`='dsadas'
+
+2023-04-30 21:56:19 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Fan','fn112','1500','2000','21') ON DUPLICATE KEY UPDATE `sku`='fn112'
+
+2023-04-30 21:56:19 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Chair','asa','10000','12000','10') ON DUPLICATE KEY UPDATE `sku`='asa'
+
+2023-04-30 21:56:19 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Table','ajjsa','2000','2500','20') ON DUPLICATE KEY UPDATE `sku`='ajjsa'
+
+2023-04-30 21:56:19 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Fan','sdadafasd','1500','2000','21') ON DUPLICATE KEY UPDATE `sku`='sdadafasd'
+
+2023-04-30 21:56:19 : INSERT INTO `product` (`name`,`sku`,`cost`,`price`,`quantity`) VALUES ('Fan','sdadafasd','1500','200','21') ON DUPLICATE KEY UPDATE `sku`='sdadafasd'
+

@@ -1,0 +1,12 @@
+name,sku,cost,price,quantity
+Chair,ch123,10000,12000,10
+Table,tb122,2000,2500,20
+Fan,fn1,1500,2000,21
+Chair,asa,10000,12000,10
+Table,asasda,2000,2500,20
+Fan,dsadas,1500,2000,21
+Fan,fn112,1500,2000,21
+Chair,asa,10000,12000,10
+Table,ajjsa,2000,2500,20
+Fan,sdadafasd,1500,2000,21
+Fan,sdadafasd,1500,200,21

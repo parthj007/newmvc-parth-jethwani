@@ -77,7 +77,15 @@ class Block_Product_Grid extends Block_Core_Grid
     {
         $this->addButton('product_id',[
             'title' => 'Add New Product',
-            'url' => $this->getUrl('add')
+            'url' => $this->getUrl('add',null,null,true)
+        ]);
+        $this->addButton('Import',[
+            'title' => 'Import CSV',
+            'url' => $this->getUrl('Import',null,null,true)
+        ]);
+        $this->addButton('Export',[
+            'title' => 'Export CSV',
+            'url' => $this->getUrl('Export',null,null,true)
         ]);
         return parent::_prepareButtons();
     }

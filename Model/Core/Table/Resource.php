@@ -101,6 +101,55 @@ class Model_Core_Table_Resource
         return $this->getAdapter()->update($sql);
     }
 
+    public function insertUpdateOnDuplicate1($data,$uniqueColumns)
+    {   
+        $keys = array_keys($data);
+        $values = array_values($data);
+        // Ccc::log($keys,"query.log");
+
+        $k = '`' . implode("`,`", $keys) . '`';
+        $v = "'" . implode("','", $values) . "'";
+
+        $updateValue = [];
+        foreach ($uniqueColumns as $column) {
+            $updateValue[$column] = $data[$column];
+        }
+
+        foreach ($updateValue as $key => $value) {
+           $final[] = "`".$key."`= ".$value;
+        }
+
+        $result_string = null;
+        foreach ($updateValue as $key => $value) {
+            $result_string .= "`$key`='$value',";
+        }
+
+        $result_string = rtrim($result_string,",");
+
+        $sql = "INSERT INTO `{$this->tableName}` ({$k}) VALUES ({$v}) ON DUPLICATE KEY UPDATE {$result_string}";
+        Ccc::log($sql, 'query.log');
+        $result = $this->getAdapter()->query($sql);
+        return $result;
+
+    }
+
+     public function insertUpdateOnDuplicate($data, $uniqueColumns)
+    {
+        $keyString= '`'.implode('`,`', array_keys($data)).'`';
+        $valueString= "'".implode("','", array_values($data))."'";
+
+        $keys = array_keys($uniqueColumns);
+
+        $keyValue = "";
+        for ($i=0; $i < count($uniqueColumns); $i++) { 
+            $keyValue .= "`".$keys[$i]."`="."'".$uniqueColumns[$keys[$i]]."',"; 
+        }
+        $keyValue = rtrim($keyValue,",");
+
+        $sql = "INSERT INTO `{$this->getTableName()}` ({$keyString}) VALUES ({$valueString}) ON DUPLICATE KEY UPDATE $keyValue ";
+        Ccc::log($sql,"query.log");
+        return $this->getAdapter()->insert($sql);
+    }
 
     public function delete($id)
     {

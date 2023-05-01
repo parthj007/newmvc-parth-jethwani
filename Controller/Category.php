@@ -57,7 +57,7 @@ class Controller_Category extends Controller_Core_Action
 
             $parentForEdit = $category->getParentCategories();
             foreach ($parentForEdit as $id => $path) {
-                if (str_contains($path, $category->path)) {
+                if (strpos($path, $category->path)) {
                     unset($parentForEdit[$id]);
                 }
             }

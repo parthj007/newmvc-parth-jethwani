@@ -1,4 +1,4 @@
-2023-04-27 11:56:55 : mysqli_result Object
+2023-04-30 21:42:10 : mysqli_result Object
 (
     [current_field] => 0
     [field_count] => 1
@@ -8,7 +8,7 @@
 )
 
 
-2023-04-27 11:56:55 : mysqli_result Object
+2023-04-30 21:42:12 : mysqli_result Object
 (
     [current_field] => 0
     [field_count] => 1
@@ -18,27 +18,7 @@
 )
 
 
-2023-04-27 11:56:55 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:56:55 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:56:55 : mysqli_result Object
+2023-04-30 21:42:17 : mysqli_result Object
 (
     [current_field] => 0
     [field_count] => 1
@@ -48,17 +28,7 @@
 )
 
 
-2023-04-27 11:56:55 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:20 : mysqli_result Object
+2023-04-30 21:42:34 : mysqli_result Object
 (
     [current_field] => 0
     [field_count] => 1
@@ -68,7 +38,7 @@
 )
 
 
-2023-04-27 11:57:20 : mysqli_result Object
+2023-04-30 21:44:32 : mysqli_result Object
 (
     [current_field] => 0
     [field_count] => 1
@@ -78,27 +48,7 @@
 )
 
 
-2023-04-27 11:57:20 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:20 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:20 : mysqli_result Object
+2023-04-30 21:44:34 : mysqli_result Object
 (
     [current_field] => 0
     [field_count] => 1
@@ -108,17 +58,7 @@
 )
 
 
-2023-04-27 11:57:20 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:21 : mysqli_result Object
+2023-04-30 21:44:37 : mysqli_result Object
 (
     [current_field] => 0
     [field_count] => 1
@@ -128,7 +68,7 @@
 )
 
 
-2023-04-27 11:57:21 : mysqli_result Object
+2023-04-30 21:47:45 : mysqli_result Object
 (
     [current_field] => 0
     [field_count] => 1
@@ -138,27 +78,7 @@
 )
 
 
-2023-04-27 11:57:21 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:21 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:21 : mysqli_result Object
+2023-04-30 21:47:50 : mysqli_result Object
 (
     [current_field] => 0
     [field_count] => 1
@@ -168,17 +88,7 @@
 )
 
 
-2023-04-27 11:57:21 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:21 : mysqli_result Object
+2023-04-30 21:47:55 : mysqli_result Object
 (
     [current_field] => 0
     [field_count] => 1
@@ -188,7 +98,7 @@
 )
 
 
-2023-04-27 11:57:21 : mysqli_result Object
+2023-04-30 21:48:07 : mysqli_result Object
 (
     [current_field] => 0
     [field_count] => 1
@@ -198,27 +108,7 @@
 )
 
 
-2023-04-27 11:57:21 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:21 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:21 : mysqli_result Object
+2023-04-30 21:48:17 : mysqli_result Object
 (
     [current_field] => 0
     [field_count] => 1
@@ -228,17 +118,7 @@
 )
 
 
-2023-04-27 11:57:21 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:21 : mysqli_result Object
+2023-04-30 21:48:18 : mysqli_result Object
 (
     [current_field] => 0
     [field_count] => 1
@@ -248,7 +128,7 @@
 )
 
 
-2023-04-27 11:57:21 : mysqli_result Object
+2023-04-30 21:48:21 : mysqli_result Object
 (
     [current_field] => 0
     [field_count] => 1
@@ -258,27 +138,7 @@
 )
 
 
-2023-04-27 11:57:21 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:21 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:21 : mysqli_result Object
+2023-04-30 21:48:54 : mysqli_result Object
 (
     [current_field] => 0
     [field_count] => 1
@@ -288,17 +148,7 @@
 )
 
 
-2023-04-27 11:57:21 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:21 : mysqli_result Object
+2023-04-30 21:48:57 : mysqli_result Object
 (
     [current_field] => 0
     [field_count] => 1
@@ -308,7 +158,7 @@
 )
 
 
-2023-04-27 11:57:21 : mysqli_result Object
+2023-04-30 21:49:00 : mysqli_result Object
 (
     [current_field] => 0
     [field_count] => 1
@@ -318,27 +168,7 @@
 )
 
 
-2023-04-27 11:57:21 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:21 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:21 : mysqli_result Object
+2023-04-30 21:49:02 : mysqli_result Object
 (
     [current_field] => 0
     [field_count] => 1
@@ -348,17 +178,7 @@
 )
 
 
-2023-04-27 11:57:21 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:22 : mysqli_result Object
+2023-04-30 21:49:05 : mysqli_result Object
 (
     [current_field] => 0
     [field_count] => 1
@@ -368,7 +188,7 @@
 )
 
 
-2023-04-27 11:57:22 : mysqli_result Object
+2023-04-30 21:49:10 : mysqli_result Object
 (
     [current_field] => 0
     [field_count] => 1
@@ -378,27 +198,7 @@
 )
 
 
-2023-04-27 11:57:22 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:22 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:22 : mysqli_result Object
+2023-04-30 21:49:12 : mysqli_result Object
 (
     [current_field] => 0
     [field_count] => 1
@@ -408,17 +208,7 @@
 )
 
 
-2023-04-27 11:57:22 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:32 : mysqli_result Object
+2023-04-30 21:49:14 : mysqli_result Object
 (
     [current_field] => 0
     [field_count] => 1
@@ -428,7 +218,7 @@
 )
 
 
-2023-04-27 11:57:32 : mysqli_result Object
+2023-04-30 21:49:18 : mysqli_result Object
 (
     [current_field] => 0
     [field_count] => 1
@@ -438,27 +228,7 @@
 )
 
 
-2023-04-27 11:57:32 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:32 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:32 : mysqli_result Object
+2023-04-30 21:49:19 : mysqli_result Object
 (
     [current_field] => 0
     [field_count] => 1
@@ -468,17 +238,7 @@
 )
 
 
-2023-04-27 11:57:32 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:45 : mysqli_result Object
+2023-05-01 06:30:50 : mysqli_result Object
 (
     [current_field] => 0
     [field_count] => 1
@@ -488,7 +248,7 @@
 )
 
 
-2023-04-27 11:57:45 : mysqli_result Object
+2023-05-01 06:30:52 : mysqli_result Object
 (
     [current_field] => 0
     [field_count] => 1
@@ -498,27 +258,7 @@
 )
 
 
-2023-04-27 11:57:45 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:45 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:45 : mysqli_result Object
+2023-05-01 06:51:10 : mysqli_result Object
 (
     [current_field] => 0
     [field_count] => 1
@@ -528,307 +268,7 @@
 )
 
 
-2023-04-27 11:57:45 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:46 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 1
-    [type] => 0
-)
-
-
-2023-04-27 11:57:46 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 1
-    [type] => 0
-)
-
-
-2023-04-27 11:57:46 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:46 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:46 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 1
-    [type] => 0
-)
-
-
-2023-04-27 11:57:46 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:47 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 1
-    [type] => 0
-)
-
-
-2023-04-27 11:57:47 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 1
-    [type] => 0
-)
-
-
-2023-04-27 11:57:47 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:47 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:47 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 1
-    [type] => 0
-)
-
-
-2023-04-27 11:57:47 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:47 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 1
-    [type] => 0
-)
-
-
-2023-04-27 11:57:47 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 1
-    [type] => 0
-)
-
-
-2023-04-27 11:57:47 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:47 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:47 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 1
-    [type] => 0
-)
-
-
-2023-04-27 11:57:47 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:47 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 1
-    [type] => 0
-)
-
-
-2023-04-27 11:57:47 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 1
-    [type] => 0
-)
-
-
-2023-04-27 11:57:47 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:47 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:47 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 1
-    [type] => 0
-)
-
-
-2023-04-27 11:57:47 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:47 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 1
-    [type] => 0
-)
-
-
-2023-04-27 11:57:47 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 1
-    [type] => 0
-)
-
-
-2023-04-27 11:57:47 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:47 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 0
-    [type] => 0
-)
-
-
-2023-04-27 11:57:47 : mysqli_result Object
-(
-    [current_field] => 0
-    [field_count] => 1
-    [lengths] => 
-    [num_rows] => 1
-    [type] => 0
-)
-
-
-2023-04-27 11:57:47 : mysqli_result Object
+2023-05-01 10:44:51 : mysqli_result Object
 (
     [current_field] => 0
     [field_count] => 1
